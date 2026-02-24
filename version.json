@@ -1,5 +1,5 @@
 {
-  "versionCode": 320,
-  "versionName": "1.1.4",
-  "notes": "1.1.4 Release\n\n### Changed\n- Privacy & Cleanup: Removed `DEPENDENCY_INFO_BLOCK` metadata from the APK signature to eliminate unnecessary library telemetry."
+  "versionCode": 325,
+  "versionName": "1.1.5",
+  "notes": "1.1.5 Release\n\n### Fixed\n- UI: Improved text contrast on Donate page for Android 14 devices (explicit white text).\n- Update: Fixed \"version_code\" key mismatch in UpdateChecker to restore update notifications."
 }

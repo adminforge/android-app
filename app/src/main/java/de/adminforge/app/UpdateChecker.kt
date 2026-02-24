@@ -84,7 +84,7 @@ object UpdateChecker {
                     progressDialog.dismiss()
                     if (jsonStr != null) {
                         val json = org.json.JSONObject(jsonStr)
-                        val latestCode = json.optInt("version_code", 0)
+                        val latestCode = json.optInt("versionCode", 0)
                         val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
                         
                         if (latestCode > currentCode) {

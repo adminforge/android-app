@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.5] - 2026-02-24
+### Fixed
+- UI: Improved text contrast on Donate page for Android 14 devices (explicit white text).
+- Update: Fixed "version_code" key mismatch in UpdateChecker to restore update notifications.
+
 ## [1.1.4] - 2026-02-24
 ### Changed
 - Privacy & Cleanup: Removed `DEPENDENCY_INFO_BLOCK` metadata from the APK signature to eliminate unnecessary library telemetry.
