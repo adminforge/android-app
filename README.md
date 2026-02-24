@@ -44,4 +44,4 @@ Diese Version der App ist speziell für den **F-Droid Store** optimiert:
 Dieses Projekt ist unter der **GNU GPL v3.0** lizenziert. Weitere Details findest du in der [LICENSE](LICENSE) Datei.
 
 ---
-Betrieben mit ❤️ und 🤖 von [adminForge](https://adminforge.de).
+Betrieben mit ❤️ und erstellt mit 🤖 von [adminForge](https://adminforge.de).

@@ -277,8 +277,8 @@ class WebActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Liste
                 startActivity(intent)
                 true
             }
-            R.id.action_changelog -> {
-                val intent = Intent(this, ChangelogActivity::class.java)
+            R.id.action_git -> {
+                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://git.adminforge.de/adminforge/android-app"))
                 startActivity(intent)
                 true
             }
