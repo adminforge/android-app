@@ -1,5 +1,5 @@
 {
-  "versionCode": 305,
-  "versionName": "1.1.1",
-  "notes": "1.1.1 Release\n\n### Fixed\n- OLED Black Regression: Enforced black background and corrected text contrasts for Android 14+ compatibility.\n- Theme Synchronization: Unified dark mode enforcement across all activities."
+  "versionCode": 310,
+  "versionName": "1.1.2",
+  "notes": "1.1.2 Release\n\n### Changed\n- Privacy & Security: Removed sensitive `REQUEST_INSTALL_PACKAGES` and `WRITE_EXTERNAL_STORAGE` permissions.\n- Update Mechanism: Refactored in-app update notifications to redirect to the official Gitea release page for safer manual updates."
 }

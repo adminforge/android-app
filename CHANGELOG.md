@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.2] - 2026-02-24
+### Changed
+- Privacy & Security: Removed sensitive `REQUEST_INSTALL_PACKAGES` and `WRITE_EXTERNAL_STORAGE` permissions.
+- Update Mechanism: Refactored in-app update notifications to redirect to the official Gitea release page for safer manual updates.
+
 ## [1.1.1] - 2026-02-24
 ### Fixed
 - OLED Black Regression: Enforced black background and corrected text contrasts for Android 14+ compatibility.

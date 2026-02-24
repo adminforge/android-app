@@ -122,92 +122,13 @@ object UpdateChecker {
         val versionName = json.optString("version_name", "Unbekannt")
         AlertDialog.Builder(context)
             .setTitle("Neues Update verfügbar ($versionName)")
-            .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du sie jetzt herunterladen und installieren?")
-            .setPositiveButton("Aktualisieren") { _, _ ->
-                downloadAndInstall(context, json)
+            .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du die Release-Seite öffnen, um sie herunterzuladen?")
+            .setPositiveButton("Öffnen") { _, _ ->
+                val releaseUrl = "https://git.adminforge.de/adminforge/android-app/releases"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(releaseUrl))
+                context.startActivity(intent)
             }
             .setNegativeButton("Später", null)
             .show()
-    }
-
-    private fun downloadAndInstall(context: Context, json: org.json.JSONObject) {
-        val downloadUrl = json.optString("download_url", "")
-        if (downloadUrl.isEmpty()) return
-
-        val progressDialog = ProgressDialog(context)
-        progressDialog.setMessage("Lade Update herunter...")
-        progressDialog.isIndeterminate = false
-        progressDialog.setMax(100)
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
-        progressDialog.setCancelable(false)
-        progressDialog.show()
-
-        thread {
-            try {
-                val url = URL(downloadUrl)
-                val connection = url.openConnection() as HttpURLConnection
-                connection.connectTimeout = 10000
-                connection.readTimeout = 30000
-                connection.connect()
-                
-                val fileLength = connection.contentLength
-                
-                val updateDir = File(context.cacheDir, "updates")
-                if (!updateDir.exists()) updateDir.mkdirs()
-                
-                val apkFile = File(updateDir, "adminforge-latest.apk")
-                if (apkFile.exists()) apkFile.delete()
-                
-                val inputStream = connection.inputStream
-                val outputStream = FileOutputStream(apkFile)
-                
-                val data = ByteArray(4096)
-                var total: Long = 0
-                var count: Int
-                
-                while (inputStream.read(data).also { count = it } != -1) {
-                    total += count.toLong()
-                    if (fileLength > 0) {
-                        val progress = (total * 100 / fileLength).toInt()
-                        Handler(Looper.getMainLooper()).post {
-                            progressDialog.progress = progress
-                        }
-                    }
-                    outputStream.write(data, 0, count)
-                }
-                
-                outputStream.flush()
-                outputStream.close()
-                inputStream.close()
-                
-                Handler(Looper.getMainLooper()).post {
-                    progressDialog.dismiss()
-                    installApk(context, apkFile)
-                }
-                
-            } catch (e: Exception) {
-                Log.e("UpdateChecker", "Download failed", e)
-                Handler(Looper.getMainLooper()).post {
-                    progressDialog.dismiss()
-                    Toast.makeText(context, "Fehler beim Herunterladen", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-    private fun installApk(context: Context, apkFile: File): Boolean {
-        return try {
-            val uri = FileProvider.getUriForFile(context, "${context.packageName}.provider", apkFile)
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.setDataAndType(uri, "application/vnd.android.package-archive")
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(intent)
-            true
-        } catch (e: Exception) {
-            Log.e("UpdateChecker", "Install failed", e)
-            Toast.makeText(context, "Fehler beim Starten der Installation", Toast.LENGTH_SHORT).show()
-            false
-        }
     }
 }
