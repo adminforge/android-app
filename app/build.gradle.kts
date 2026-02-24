@@ -27,6 +27,11 @@ android {
         versionName = vName
     }
 
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
     signingConfigs {
         create("myconfig") {
             storeFile = rootProject.file("release.jks")
