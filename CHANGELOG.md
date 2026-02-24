@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.1] - 2026-02-24
+### Fixed
+- OLED Black Regression: Enforced black background and corrected text contrasts for Android 14+ compatibility.
+- Theme Synchronization: Unified dark mode enforcement across all activities.
+
 ## [1.1.0] - 2026-02-24
 ### Added
 - **Milestone**: Official leap to version 1.1.0 following a comprehensive security and performance audit.
