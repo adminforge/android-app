@@ -2,7 +2,9 @@
 
 Die offizielle Android-App für [adminForge](https://adminforge.de) – Deine Anlaufstelle für datenschutzfreundliche und werbefreie Open-Source-Dienste.
 
-![adminForge Logo](https://adminforge.de/wp-content/uploads/2024/09/adminforge-small-round-200x200-1.png)
+<p align="center">
+  <img src="https://adminforge.de/wp-content/uploads/2024/09/adminforge-small-round-200x200-1.png" alt="adminForge Logo" />
+</p>
 
 ## Features
 
