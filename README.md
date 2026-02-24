@@ -6,6 +6,9 @@ Die offizielle Android-App für [adminForge](https://adminforge.de) – Deine An
   <img src="https://adminforge.de/wp-content/uploads/2024/09/adminforge-small-round-200x200-1.png" alt="adminForge Logo" />
 </p>
 
+
+## Screenshots
+
 <p align="center">
   <img src="screenshots/screenshot_1.png" width="22%" />
   <img src="screenshots/screenshot_2.png" width="22%" />
