@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.159] - 2026-02-24
+### Added
+- **Release Automation**: Integrated Gitea "latest" link in README.
+- **Workflow**: Automated release notes extraction for Git releases.
+- **Branding**: Added centered screenshots to the README.
+
 ## [1.0.157] - 2026-02-24
 ### Added
 - **UI Integration**: Added centered screenshots to the README.

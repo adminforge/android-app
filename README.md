@@ -27,8 +27,8 @@ Die offizielle Android-App für [adminForge](https://adminforge.de) – Deine An
 
 ## Installation
 
-Lade die aktuellste Version direkt von unserer Webseite herunter:  
-👉 **[adminforge.de/download/adminforge-latest.apk](https://adminforge.de/download/adminforge-latest.apk)**
+Lade die aktuellste Version direkt von unserem Git-Repository herunter:  
+👉 **[git.adminforge.de/adminforge/android-app/releases/latest](https://git.adminforge.de/adminforge/android-app/releases/latest)**
 
 ## Technologien
 
