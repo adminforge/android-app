@@ -18,32 +18,24 @@ import java.net.URL
 import kotlin.concurrent.thread
 
 object UpdateChecker {
-    private const val UPDATE_URL = "https://adminforge.de/download/adminforge-latest.apk"
+    private const val VERSION_JSON_URL = "https://git.adminforge.de/adminforge/android-app/raw/branch/main/version.json"
     private const val PREFS_NAME = "adminforge_prefs"
-    private const val KEY_LAST_MODIFIED = "apk_last_modified"
     
     // session flag to prevent redundant checks on every activity navigation
     private var hasCheckedThisSession = false
     
-    // Background check to just log or update badge (we simply store the new Last-Modified if differs)
+    // Background check
     fun checkSilently(context: Context) {
         thread {
             try {
-                val url = URL(UPDATE_URL)
-                val connection = url.openConnection() as HttpURLConnection
-                connection.requestMethod = "HEAD"
-                connection.connectTimeout = 5000
-                connection.readTimeout = 5000
+                val jsonStr = fetchUrl(VERSION_JSON_URL) ?: return@thread
+                val json = org.json.JSONObject(jsonStr)
+                val latestCode = json.optInt("version_code", 0)
                 
-                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-                    val lastModified = connection.getHeaderField("Last-Modified") ?: ""
-                    val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                    val storedLastModified = prefs.getString(KEY_LAST_MODIFIED, "")
-                    
-                    if (lastModified.isNotEmpty() && lastModified != storedLastModified) {
-                        Log.d("UpdateChecker", "New update detected silently: $lastModified")
-                        // Optional: Here you could show a badge on the gear icon
-                    }
+                val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
+                
+                if (latestCode > currentCode) {
+                    Log.d("UpdateChecker", "New update detected silently: Code $latestCode")
                 }
             } catch (e: Exception) {
                 Log.e("UpdateChecker", "Silent check failed", e)
@@ -57,24 +49,17 @@ object UpdateChecker {
         
         thread {
             try {
-                val url = URL(UPDATE_URL)
-                val connection = url.openConnection() as HttpURLConnection
-                connection.requestMethod = "HEAD"
-                connection.connectTimeout = 5000
-                connection.readTimeout = 5000
+                val jsonStr = fetchUrl(VERSION_JSON_URL) ?: return@thread
+                val json = org.json.JSONObject(jsonStr)
+                val latestCode = json.optInt("version_code", 0)
+                val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
                 
-                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-                    val lastModified = connection.getHeaderField("Last-Modified") ?: ""
-                    val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                    val storedLastModified = prefs.getString(KEY_LAST_MODIFIED, "")
-                    
-                    if (lastModified.isNotEmpty() && lastModified != storedLastModified) {
-                        Handler(Looper.getMainLooper()).post {
-                            try {
-                                showUpdateDialog(context, lastModified)
-                            } catch (e: Exception) {
-                                Log.e("UpdateChecker", "Could not show update dialog on startup", e)
-                            }
+                if (latestCode > currentCode) {
+                    Handler(Looper.getMainLooper()).post {
+                        try {
+                            showUpdateDialog(context, json)
+                        } catch (e: Exception) {
+                            Log.e("UpdateChecker", "Could not show update dialog on startup", e)
                         }
                     }
                 }
@@ -86,7 +71,6 @@ object UpdateChecker {
 
     // Interactive check when user clicks "Auf Updates prüfen"
     fun checkForUpdateInteractive(context: Context) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Prüfe auf Updates...")
         progressDialog.setCancelable(false)
@@ -94,29 +78,22 @@ object UpdateChecker {
 
         thread {
             try {
-                val url = URL(UPDATE_URL)
-                val connection = url.openConnection() as HttpURLConnection
-                connection.requestMethod = "HEAD"
-                connection.connectTimeout = 5000
-                connection.readTimeout = 5000
+                val jsonStr = fetchUrl(VERSION_JSON_URL)
                 
-                val responseCode = connection.responseCode
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    val lastModified = connection.getHeaderField("Last-Modified") ?: ""
-                    val storedLastModified = prefs.getString(KEY_LAST_MODIFIED, "")
-                    
-                    Handler(Looper.getMainLooper()).post {
-                        progressDialog.dismiss()
-                        if (lastModified.isNotEmpty() && lastModified != storedLastModified) {
-                            showUpdateDialog(context, lastModified)
+                Handler(Looper.getMainLooper()).post {
+                    progressDialog.dismiss()
+                    if (jsonStr != null) {
+                        val json = org.json.JSONObject(jsonStr)
+                        val latestCode = json.optInt("version_code", 0)
+                        val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
+                        
+                        if (latestCode > currentCode) {
+                            showUpdateDialog(context, json)
                         } else {
                             Toast.makeText(context, "Du bist bereits auf dem neuesten Stand.", Toast.LENGTH_SHORT).show()
                         }
-                    }
-                } else {
-                    Handler(Looper.getMainLooper()).post {
-                        progressDialog.dismiss()
-                        Toast.makeText(context, "Fehler bei der Update-Prüfung ($responseCode)", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Fehler bei der Update-Prüfung", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
@@ -129,18 +106,34 @@ object UpdateChecker {
         }
     }
 
-    private fun showUpdateDialog(context: Context, newLastModified: String) {
+    private fun fetchUrl(urlStr: String): String? {
+        return try {
+            val url = URL(urlStr)
+            val connection = url.openConnection() as HttpURLConnection
+            connection.connectTimeout = 5000
+            connection.readTimeout = 5000
+            connection.inputStream.bufferedReader().use { it.readText() }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun showUpdateDialog(context: Context, json: org.json.JSONObject) {
+        val versionName = json.optString("version_name", "Unbekannt")
         AlertDialog.Builder(context)
-            .setTitle("Neues Update verfügbar")
+            .setTitle("Neues Update verfügbar ($versionName)")
             .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du sie jetzt herunterladen und installieren?")
             .setPositiveButton("Aktualisieren") { _, _ ->
-                downloadAndInstall(context, newLastModified)
+                downloadAndInstall(context, json)
             }
             .setNegativeButton("Später", null)
             .show()
     }
 
-    private fun downloadAndInstall(context: Context, newLastModified: String) {
+    private fun downloadAndInstall(context: Context, json: org.json.JSONObject) {
+        val downloadUrl = json.optString("download_url", "")
+        if (downloadUrl.isEmpty()) return
+
         val progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Lade Update herunter...")
         progressDialog.isIndeterminate = false
@@ -151,7 +144,7 @@ object UpdateChecker {
 
         thread {
             try {
-                val url = URL(UPDATE_URL)
+                val url = URL(downloadUrl)
                 val connection = url.openConnection() as HttpURLConnection
                 connection.connectTimeout = 10000
                 connection.readTimeout = 30000
@@ -189,13 +182,7 @@ object UpdateChecker {
                 
                 Handler(Looper.getMainLooper()).post {
                     progressDialog.dismiss()
-                    
-                    // We try to install first. If it fires, we save.
-                    if (installApk(context, apkFile)) {
-                        // Speichern des neuen Last-Modified Datums
-                        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                        prefs.edit().putString(KEY_LAST_MODIFIED, newLastModified).apply()
-                    }
+                    installApk(context, apkFile)
                 }
                 
             } catch (e: Exception) {
