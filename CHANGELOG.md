@@ -1,10 +1,36 @@
 # Changelog
 
+## [1.0.157] - 2026-02-24
+### Added
+- **UI Integration**: Added centered screenshots to the README.
+- **Routine**: Synchronized changelog and established automated release procedures.
+
+## [1.0.155] - 2026-02-24
+### Added
+- **Release Assets**: Standardized Gitea release names to include the version number (e.g., `adminforge-v1.0.155.apk`).
+
+## [1.0.154] - 2026-02-24
+### Added
+- **Gitea Automation**: Integrated Gitea API for fully automated releases with APK attachment.
+
+## [1.0.152] - 2026-02-24
+### Changed
+- **Documentation**: Centered the project logo and refined the README layout.
+
+## [1.0.151] - 2026-02-24
+### Added
+- **Git Routine**: Automated Git commits, tagging, and pushing within the release script.
+- **Branding**: Updated the README with the official high-resolution adminForge logo.
+
 ## [1.0.150] - 2026-02-24
 ### Changed
-- **Service Update**: Updated the icon for "PDF Tools" on the start page.
+- **Assets**: Updated "PDF Tools" icon for better visibility.
+- **Licensing**: Added GNU GPL v3.0 license and project README.
 
-## [1.0.148] - 2026-02-24
+## [1.0.149] - 2026-02-24
+### Fixed
+- **System Integration**: Fixed status bar visibility issues on Android 15 and 16 using `fitsSystemWindows`.
+- **UI Consistency**: Applied layout fixes to all activities (Status, News, Donate, Settings, etc.).
 
 ## [1.0.147] - 2026-02-24
 ### Added
