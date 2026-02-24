@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.5] - 2026-02-24
+## [1.1.7] - 2026-02-24
 ### Fixed
 - UI: Improved text contrast on Donate page for Android 14 devices (explicit white text).
 - Update: Fixed "version_code" key mismatch in UpdateChecker to restore update notifications.
