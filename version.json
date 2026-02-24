@@ -1,5 +1,5 @@
 {
-  "versionCode": 335,
-  "versionName": "1.1.7",
-  "notes": "1.1.7 Release\n\n### Fixed\n- UI: Improved text contrast on Donate page for Android 14 devices (explicit white text).\n- Update: Fixed \"version_code\" key mismatch in UpdateChecker to restore update notifications."
+  "versionCode": 340,
+  "versionName": "1.1.8",
+  "notes": "1.1.8 Release\n\n### Fixed\n- Update: Corrected \"versionName\" key in UpdateChecker to fix the \"(Unbekannt)\" version display in the update dialog."
 }

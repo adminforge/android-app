@@ -119,7 +119,7 @@ object UpdateChecker {
     }
 
     private fun showUpdateDialog(context: Context, json: org.json.JSONObject) {
-        val versionName = json.optString("version_name", "Unbekannt")
+        val versionName = json.optString("versionName", "Unbekannt")
         AlertDialog.Builder(context)
             .setTitle("Neues Update verfügbar ($versionName)")
             .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du die Release-Seite öffnen, um sie herunterzuladen?")

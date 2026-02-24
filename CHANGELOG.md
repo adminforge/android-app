@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.8] - 2026-02-24
+### Fixed
+- Update: Corrected "versionName" key in UpdateChecker to fix the "(Unbekannt)" version display in the update dialog.
+
 ## [1.1.7] - 2026-02-24
 ### Fixed
 - UI: Improved text contrast on Donate page for Android 14 devices (explicit white text).
