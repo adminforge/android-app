@@ -97,13 +97,6 @@ tasks.whenTaskAdded {
                 include("app-release.apk")
                 rename { "adminforge-latest.apk" }
             }
-            exec {
-                commandLine(
-                    "rsync", "-varpP", "-e", "ssh -p 1984",
-                    "${project.rootDir}/adminforge-latest.apk",
-                    "root@176.9.8.206:/opt/blog/download/"
-                )
-            }
         }
     }
 }

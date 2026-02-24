@@ -1,14 +1,15 @@
 # Changelog
 
-## [1.0.161] - 2026-02-24
-### Fixed
-- **Release Automation**: Fixed a bug where changelog notes were not correctly extracted for Gitea releases.
+## [1.1.0] - 2026-02-24
+### Added
+- **Milestone**: Official leap to version 1.1.0 following a comprehensive security and performance audit.
+- **Security**: Hardened app configuration with disabled cleartext traffic and sandboxed WebViews.
+- **Performance**: Optimized background polling (5-10 min) and caching mechanisms for better efficiency and battery life.
 
-## [1.0.160] - 2026-02-24
 ### Changed
-- **OTA Migration**: Pivot to 100% Git-centric distribution via Gitea releases and `version.json`.
-- **Infrastructure**: Removed legacy `rsync` deployment logic.
-- **Gitea Sync**: Automated changelog notes extraction for Gitea release descriptions.
+- **Infrastructure**: Fully transitioned to a Git-centric OTA update model.
+- **Cleanup**: Removed all legacy `rsync` deployment remnants.
+- **Workflow**: Solidified the automated Gitea release routine with integrated changelog synchronization.
 
 ## [1.0.159] - 2026-02-24
 ### Added
