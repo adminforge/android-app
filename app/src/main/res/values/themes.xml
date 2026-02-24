@@ -5,6 +5,10 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/primary</item>
         <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#B3FFFFFF</item>
     </style>
 
     <style name="ToolbarThemeOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
