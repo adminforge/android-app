@@ -1,0 +1,582 @@
+[
+  {
+    "name": "📶 Netzwerk & Verwaltung",
+    "services": [
+      {
+        "name": "DNS Resolver",
+        "icon": "https://adminforge.de/wp-content/uploads/2021/07/dnsforge.png",
+        "description": "Zensurfreier DNS Resolver ohne Logging, dafür mit Werbeblocker.",
+        "link": "https://dnsforge.de",
+        "info_link": "https://adminforge.de/services/dns-resolver/"
+      },
+      {
+        "name": "DynDNS",
+        "icon": "https://adminforge.de/wp-content/uploads/2021/07/ddns.png",
+        "description": "Einen festen Domainnamen deiner dynamischen IP zuweisen.",
+        "link": "https://noip.at",
+        "info_link": "https://adminforge.de/services/dyndns/"
+      },
+      {
+        "name": "Speedtest",
+        "icon": "https://adminforge.de/wp-content/uploads/2021/07/librespeed.png",
+        "description": "Teste deine Internet Bandbreite über den Browser.",
+        "link": "https://bandspeed.de",
+        "info_link": "https://adminforge.de/services/speedtest/"
+      },
+      {
+        "name": "IP Info",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/ipinfo.png",
+        "description": "Zeigt dir deine IP-Adresse, Land, AS-Nummer und deinen User-Agent an.",
+        "link": "https://ipwho.de",
+        "info_link": "https://adminforge.de/services/ip-info/"
+      },
+      {
+        "name": "STUN Server",
+        "icon": "https://adminforge.de/wp-content/uploads/2021/07/stun.png",
+        "description": "stun:relay.adminforge.de:443 stun:relay2.adminforge.de:443",
+        "link": "https://adminforge.de/services/stun-server/",
+        "info_link": ""
+      },
+      {
+        "name": "ActivityPub Relay",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/fediverse-1.png",
+        "description": "Ein ActivityPub Relais für das deutschsprachige Fediverse.",
+        "link": "https://relay.kanoa.de",
+        "info_link": "https://adminforge.de/services/mastodon/"
+      },
+      {
+        "name": "NTP Server",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/10/chrony.jpg",
+        "description": "Freie Zeitserver für eine höchstmögliche genaue Zeitsynchronisation.",
+        "link": "https://adminforge.de/services/ntp/",
+        "info_link": ""
+      },
+      {
+        "name": "FOSS Public Alert Server",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/12/foss_warn.png",
+        "description": "Erhalte weltweit Katastrophenwarnungen.",
+        "link": "https://alerts.adminforge.de",
+        "info_link": "https://adminforge.de/foss-public-alert-server/"
+      }
+    ]
+  },
+  {
+    "name": "☁️ Online-Dienste",
+    "services": [
+      {
+        "name": "Gruble Suche",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/favicon.png",
+        "description": "Eine privatsphären-respektierende Metasuchmaschine.",
+        "link": "https://www.gruble.de",
+        "info_link": "https://adminforge.de/services/searxng-suchmaschine/"
+      },
+      {
+        "name": "Nextcloud",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/nextcloud.png",
+        "description": "Dein Cloud-Speicher, Messenger, Adressbuch, Kalender, Notizblock u.v.m.",
+        "link": "https://my.adminforge.de",
+        "info_link": "https://adminforge.de/services/mynextcloud/"
+      },
+      {
+        "name": "Events",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/mobilize.png",
+        "description": "Veranstaltungen finden, planen und organisieren.",
+        "link": "https://mobilize.adminforge.de",
+        "info_link": "https://adminforge.de/services/events/"
+      },
+      {
+        "name": "URL shortener",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/lstu.png",
+        "description": "Kurz-URL-Dienst, aus langen Internetadressen werden kurze.",
+        "link": "https://tny.lv",
+        "info_link": "https://adminforge.de/services/url-shortener/"
+      },
+      {
+        "name": "PDF Tools",
+        "icon": "https://adminforge.de/wp-content/uploads/2026/02/bentopdf-150x150.png",
+        "description": "PDF Dokumente zusammenführen, Seiten extrahieren u.v.m.",
+        "link": "https://pdf.adminforge.de",
+        "info_link": "https://adminforge.de/services/pdf-tools/"
+      },
+      {
+        "name": "Rezepte",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/tandoor.png",
+        "description": "Rezepte schnell, einfach und strukturiert sammeln und teilen.",
+        "link": "https://rezepte.adminforge.de",
+        "info_link": "https://adminforge.de/services/tandoor-rezepte/"
+      },
+      {
+        "name": "Wunschliste",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/09/wishthis.png",
+        "description": "Erstellen, verwalten und anzeigen Deiner Wünsche für jede Art von Anlass.",
+        "link": "https://wunschliste.adminforge.de",
+        "info_link": "https://adminforge.de/services/wishthis-wunschliste/"
+      },
+      {
+        "name": "Ente",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/01/ente.png",
+        "description": "Sichere verschlüsselt deine Fotos, Videos und synchronisiere deine 2FA Codes.",
+        "link": "https://erpel.cloud",
+        "info_link": "https://adminforge.de/services/ente/"
+      },
+      {
+        "name": "Flohmarkt",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/04/flohmarkt.png",
+        "description": "Mit Flohmarkt habt ihr eine quelloffene Alternative zu eBay.",
+        "link": "https://flohmarkt.adminforge.de",
+        "info_link": "https://adminforge.de/services/flo"
+      },
+      {
+        "name": "Wanderer",
+        "icon": "https://adminforge.de/wp-content/uploads/2026/01/wanderer.png",
+        "description": "Plane deine Wanderwege und Touren, lade deine aufgezeichnete GPS-Tracks hoch.",
+        "link": "https://wanderer.adminforge.de/",
+        "info_link": "https://adminforge.de/services/wanderer-plane-deine-wanderwege-und-touren/"
+      },
+      {
+        "name": "AdventureLog",
+        "icon": "https://adminforge.de/wp-content/uploads/2026/01/adventurelog.png",
+        "description": "Halte deine Abenteuer als persönliche, mit GPS-Daten angereicherte Tour- und Reiselogbücher fest.",
+        "link": "https://adventure.adminforge.de",
+        "info_link": "https://adminforge.de/services/adventurelog-halte-deine-abenteuer-fest/"
+      },
+      {
+        "name": "KitchenOwl",
+        "icon": "https://adminforge.de/wp-content/uploads/2026/01/logo.png",
+        "description": "Erstelle, speichere und teile deine eigenen Rezepte. Mache eine Einkaufsliste und halte deine Finanzen im Blick.",
+        "link": "https://kitchen.adminforge.de",
+        "info_link": "https://adminforge.de/services/kitchenowl/"
+      }
+    ]
+  },
+  {
+    "name": "#️⃣ Soziales & Kommunikation",
+    "services": [
+      {
+        "name": "Mastodon",
+        "icon": "https://adminforge.de/wp-content/uploads/2022/11/mastodon.png",
+        "description": "Mastodon ist eine dezentrale Alternative zu Twitter.",
+        "link": "https://kanoa.de",
+        "info_link": "https://adminforge.de/services/mastodon/"
+      },
+      {
+        "name": "Matrix",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/matrix-1.png",
+        "description": "Dezentraler Messenger für Ende-zu-Ende verschlüsselte Nachrichten.",
+        "link": "https://nope.chat",
+        "info_link": "https://adminforge.de/services/matrix-messenger/"
+      },
+      {
+        "name": "SimpleX Chat",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/simplex.png",
+        "description": "Privatsphäre neu definiert: Der erste Messenger ohne Nutzerkennungen!",
+        "link": "https://simplex.adminforge.de",
+        "info_link": "https://adminforge.de/services/simplex-chat-server/"
+      },
+      {
+        "name": "OpenTalk",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/opentalk.png",
+        "description": "Videokonferenzen abhalten mit Bildschirmfreigabe und Whiteboard.",
+        "link": "https://teamjoin.de",
+        "info_link": "https://adminforge.de/services/opentalk-videokonferenzen/"
+      },
+      {
+        "name": "Anonym Mail",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/unbox_icon_logo.png",
+        "description": "Schütze deinen Posteingang mit unbox.at E-Mail-Aliasnamen.",
+        "link": "https://unbox.at",
+        "info_link": "https://adminforge.de/services/anonymous-email-forwarding/"
+      },
+      {
+        "name": "MollySocket (Signal)",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/03/mollysocket.png",
+        "description": "MollySocket ermöglicht es, Signal-Benachrichtigungen über UnifiedPush zu erhalten.",
+        "link": "https://adminforge.de/services/mollysocket/",
+        "info_link": ""
+      },
+      {
+        "name": "Pixelfed",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/01/pixelfed-icon-1.png",
+        "description": "Pixelfed ist eine dezentrale Alternative zu Instagram.",
+        "link": "https://pixelshot.it",
+        "info_link": "https://adminforge.de/services/pixelfed/"
+      },
+      {
+        "name": "LinkStack",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/01/linklist.png",
+        "description": "Alle deine wichtigen Links an einem Ort verwalten.",
+        "link": "https://linklist.me",
+        "info_link": "https://adminforge.de/services/linkstack/"
+      },
+      {
+        "name": "PeerTube",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/02/peertube.png",
+        "description": "PeerTube ist eine dezentrale Alternative zu YouTube.",
+        "link": "https://clip.place",
+        "info_link": "https://adminforge.de/services/peertube/"
+      }
+    ]
+  },
+  {
+    "name": "⏯️ Alternative Frontends",
+    "services": [
+      {
+        "name": "Wikipedia",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/wikipedia.png",
+        "description": "Alternatives Wikipedia-Frontend mit Schwerpunkt auf den Datenschutz.",
+        "link": "https://wiki.adminforge.de",
+        "info_link": "https://adminforge.de/services/wikipedia-frontend/"
+      },
+      {
+        "name": "Stack Overflow",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/overflow.png",
+        "description": "Alternatives Stack Overflow-Frontend mit Schwerpunkt auf den Datenschutz.",
+        "link": "https://overflow.adminforge.de",
+        "info_link": "https://adminforge.de/services/stack-overflow/"
+      },
+      {
+        "name": "Fandom",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/breezewiki.png",
+        "description": "Alternatives Fandom-Frontend ohne Werbung.",
+        "link": "https://fandom.adminforge.de",
+        "info_link": "https://adminforge.de/services/breezewiki-fandom-frontend/"
+      },
+      {
+        "name": "IMDb",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/libremdb.png",
+        "description": "Alternatives IMDb-Frontend ohne Werbung.",
+        "link": "https://imdb.adminforge.de",
+        "info_link": "https://adminforge.de/services/libremdb-imdb-frontend/"
+      },
+      {
+        "name": "Twitch",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/07/safetwitch.png",
+        "description": "Alternatives Twitch-Frontend ohne Tracking.",
+        "link": "https://safetwitch.adminforge.de/",
+        "info_link": "https://adminforge.de/services/safetwitch/"
+      },
+      {
+        "name": "Reddit",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/07/redlib.png",
+        "description": "Alternatives Reddit-Frontend ohne Tracking.",
+        "link": "https://reddit.adminforge.de/",
+        "info_link": "https://adminforge.de/services/reddit-redlib/"
+      }
+    ]
+  },
+  {
+    "name": "🏭 Büro & Produktivität",
+    "services": [
+      {
+        "name": "Pastebin",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/pastebin.png",
+        "description": "Texte, Passwörter oder Code Schnipsel verschlüsselt teilen.",
+        "link": "https://notebin.de",
+        "info_link": "https://adminforge.de/services/pastebin-dienst/"
+      },
+      {
+        "name": "Notizen",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/hedgedoc.png",
+        "description": "Gemeinsam in Echtzeit an Notizen arbeiten.",
+        "link": "https://doc.adminforge.de",
+        "info_link": "https://adminforge.de/services/hedgedoc-notizen/"
+      },
+      {
+        "name": "CryptPad",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/cryptpad.png",
+        "description": "Office Suite für ein Ende-zu-Ende-verschlüsseltes Zusammenarbeit.",
+        "link": "https://cryptpad.adminforge.de",
+        "info_link": "https://adminforge.de/services/cryptpad-office-suite/"
+      },
+      {
+        "name": "Calc",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/ethercalc.png",
+        "description": "Gemeinschaftlich in Echtzeit im Webrowser an Tabellen arbeiten.",
+        "link": "https://calc.adminforge.de",
+        "info_link": "https://adminforge.de/services/ethercalc-tabellenkalkulation/"
+      },
+      {
+        "name": "Pad",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/etherpad.png",
+        "description": "Gemeinschaftlich in Echtzeit im Webrowser an Doc’s arbeiten.",
+        "link": "https://pad.adminforge.de",
+        "info_link": "https://adminforge.de/services/etherpad-textverarbeitung/"
+      },
+      {
+        "name": "Projekt Board",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/wekan.png",
+        "description": "Projektmanagement im Kanban-Stil.",
+        "link": "https://kanban.adminforge.de",
+        "info_link": "https://adminforge.de/services/wekan-kanban/"
+      },
+      {
+        "name": "Trash Mail",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/07/trashmail.png",
+        "description": "Temporäre E-Mail-Adressen für bspw. Anmeldungen in Foren.",
+        "link": "https://mailhole.de",
+        "info_link": "https://adminforge.de/services/trash-mail/"
+      },
+      {
+        "name": "Whiteboard",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/wbo.png",
+        "description": "Gemeinsam in Echtzeit an einem Whiteboard arbeiten.",
+        "link": "https://paint.adminforge.de",
+        "info_link": "https://adminforge.de/services/paint-whiteboard/"
+      },
+      {
+        "name": "ToDo App",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/vikunja.png",
+        "description": "Organisiere all deine Aufgaben in Listen.",
+        "link": "https://tasks.adminforge.de",
+        "info_link": "https://adminforge.de/services/todo-app/"
+      },
+      {
+        "name": "Diagramme",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/draw.png",
+        "description": "Whiteboarding und Diagrammerstellung.",
+        "link": "https://draw.adminforge.de",
+        "info_link": "https://adminforge.de/services/diagramme/"
+      },
+      {
+        "name": "Git",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/gitea.png",
+        "description": "Ein Heim für deine Projekte.",
+        "link": "https://git.adminforge.de",
+        "info_link": "https://adminforge.de/services/git/"
+      },
+      {
+        "name": "IT Tools",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/08/it-tools.png",
+        "description": "Sammlung praktischer Online-Tools.",
+        "link": "https://tools.adminforge.de/",
+        "info_link": "https://adminforge.de/services/it-tools/"
+      },
+      {
+        "name": "Documenso",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/04/documenso.png",
+        "description": "Alternative zu DocuSign. PDF Dokumente signieren lassen.",
+        "link": "https://sign.adminforge.de",
+        "info_link": "https://adminforge.de/services/documenso/"
+      }
+    ]
+  },
+  {
+    "name": "📂 Datenaustausch",
+    "services": [
+      {
+        "name": "Secure Upload",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/lufi.png",
+        "description": "Dateien, Texte, Bilder, Videos einfach und verschlüsselt teilen.",
+        "link": "https://upload.adminforge.de",
+        "info_link": "https://adminforge.de/services/lufi-dateien-sicher-senden/"
+      },
+      {
+        "name": "NowTransfer Upload",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/psitransfer.png",
+        "description": "Dateien, Texte, Bilder, Videos einfach und schnell teilen.",
+        "link": "https://nowtransfer.de",
+        "info_link": "https://adminforge.de/services/nowtransfer-dateien-senden/"
+      },
+      {
+        "name": "Image Upload",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/lutim.png",
+        "description": "Bilder einzeln oder in Massen verschlüsselt über das Internet teilen.",
+        "link": "https://img.adminforge.de",
+        "info_link": "https://adminforge.de/services/lutim-bilder-sicher-senden/"
+      },
+      {
+        "name": "Airdrop",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/snapdrop.png",
+        "description": "Dateien im Heimnetzwerk vollständig über den Browser austauschen.",
+        "link": "https://dropfile.at",
+        "info_link": "https://adminforge.de/services/airdrop/"
+      },
+      {
+        "name": "Firefox Send",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/send.png",
+        "description": "Dateien sicher End-to-End-verschlüsselt mit anderne teilen.",
+        "link": "https://send.adminforge.de",
+        "info_link": "https://adminforge.de/services/firefox-send/"
+      },
+      {
+        "name": "Magic Wormhole",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/magic-wormhole.png",
+        "description": "Dinge sicher mit dem Wormhole Relay Server von einem Computer zum anderen übertragen.",
+        "link": "https://wormhole.adminforge.de",
+        "info_link": "https://adminforge.de/services/magic-wormhole-relay-server/"
+      },
+      {
+        "name": "cURL Dateiupload",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/transfer.png",
+        "description": "Einfache Freigabe von Dateien über die Befehlszeile.",
+        "link": "https://transfer.adminforge.de",
+        "info_link": "https://adminforge.de/services/transfer-sh-curl-dateiupload/"
+      }
+    ]
+  },
+  {
+    "name": "🔒 Sicherheit & Datenschutz",
+    "services": [
+      {
+        "name": "Bitwarden Password Manager",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/bitwarden.png",
+        "description": "Passwörter verschlüsselt auf sämtlichen Geräten verwalten.",
+        "link": "https://pwbox.de",
+        "info_link": "https://adminforge.de/services/bitwarden-password-manager/"
+      },
+      {
+        "name": "Vaultwarden Password Manager",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/vaultwarden-1.png",
+        "description": "Passwörter verschlüsselt auf sämtlichen Geräten mit mehr Features verwalten.",
+        "link": "https://vault.pwbox.de",
+        "info_link": "https://adminforge.de/services/vaultwarden-password-manager/"
+      },
+      {
+        "name": "Password Exchange",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/password.png",
+        "description": "Sicher Passwörter austauschen.",
+        "link": "https://pw.adminforge.de",
+        "info_link": "https://adminforge.de/services/password-exchange/"
+      },
+      {
+        "name": "Hat.sh",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/hat.sh_.png",
+        "description": "Einfache, schnelle, sichere Client-seitige Dateiverschlüsselung.",
+        "link": "https://hat.adminforge.de",
+        "info_link": "https://adminforge.de/services/hat-sh-lokale-dateiverschluesselung/"
+      },
+      {
+        "name": "Password Pusher",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/04/pwpush.png",
+        "description": "Push–Passwörter, Text, Dateien oder URLs, die automatisch ablaufen und sich selbst löschen.",
+        "link": "https://pwpush.adminforge.de/",
+        "info_link": "https://adminforge.de/services/password-pusher/"
+      }
+    ]
+  },
+  {
+    "name": "👨‍🏫 Bildung & Referenz",
+    "services": [
+      {
+        "name": "Übersetzen",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/libretranslate-1.png",
+        "description": "Bis zu 10.000 Zeichen lange Texte übersetzen.",
+        "link": "https://translate.adminforge.de",
+        "info_link": "https://adminforge.de/services/libretranslate/"
+      },
+      {
+        "name": "Google Translate",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/03/lingva.png",
+        "description": "Alternatives Google-Translate-Frontend ohne Tracking.",
+        "link": "https://lingva.adminforge.de/",
+        "info_link": "https://adminforge.de/services/lingva-translate/"
+      },
+      {
+        "name": "Multi Translate",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/07/mozhi.png",
+        "description": "Alternatives Google/DeepL/DuckDuckGo-Translate-Frontend ohne Tracking.",
+        "link": "https://mozhi.adminforge.de/",
+        "info_link": "https://adminforge.de/services/mozhi-translate/"
+      },
+      {
+        "name": "Umfragen",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/framadate.png",
+        "description": "Umfragen erstellen oder einen gemeinsamen Termin finden.",
+        "link": "https://whatapoll.de",
+        "info_link": "https://adminforge.de/services/umfragetool/"
+      },
+      {
+        "name": "BookStack Wiki",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/02/bookstack.png",
+        "description": "Lege deine Informationen geordnet in Büchern mit Seiten ab.",
+        "link": "https://bookstack.adminforge.de",
+        "info_link": "https://adminforge.de/services/bookstack-wiki/"
+      },
+      {
+        "name": "Rechtschreibprüfung",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/03/LanguageTool_Logo.png",
+        "description": "LanguageTool ist eine KI-basierte Komma-, Grammatik- und Rechtschreibprüfung.",
+        "link": "https://adminforge.de/services/languagetool/",
+        "info_link": ""
+      }
+    ]
+  },
+  {
+    "name": "📰 Nachrichten & Lesezeichen",
+    "services": [
+      {
+        "name": "RSS Reader",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/freshrss.png",
+        "description": "Fresh-RSS ist ein wundervoller web-basierter Feed Reader.",
+        "link": "https://frss.adminforge.de",
+        "info_link": "https://adminforge.de/services/freshrss-feed-reader/"
+      },
+      {
+        "name": "Bookmark Sync",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/xbrowsersync.png",
+        "description": "Lesezeichen verschlüsselt auf mehreren Geräten synchron halten.",
+        "link": "https://sync.adminforge.de",
+        "info_link": "https://adminforge.de/services/xbrowsersync-bookmark-sync/"
+      },
+      {
+        "name": "Linkwarden Bookmark Manager",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/linkwarden.png",
+        "description": "Lesezeichenmanager zum gemeinsamen sammeln und organisieren von Webseiten.",
+        "link": "https://links.adminforge.de",
+        "info_link": "https://adminforge.de/services/linkwarden-bookmark-manager/"
+      },
+      {
+        "name": "Wallabag – Read them later",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/02/wallabag.png",
+        "description": "Mit Wallabag könnt ihr interessante Artikel ablegen und einfach später lesen.",
+        "link": "https://bag.adminforge.de",
+        "info_link": "https://adminforge.de/services/wallabag-read-them-later/"
+      },
+      {
+        "name": "linkding",
+        "icon": "https://adminforge.de/wp-content/uploads/2025/04/linkding.jpg",
+        "description": "linkding ist ein Lesezeichen–Manager mit Firefox und Chrome Erweiterung.",
+        "link": "https://linkding.adminforge.de",
+        "info_link": "https://adminforge.de/services/linkding-bookmark-manager/"
+      }
+    ]
+  },
+  {
+    "name": "🔔 Push-Benachrichtigungen",
+    "services": [
+      {
+        "name": "Ntfy Push",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/ntfy.png",
+        "description": "UnifiedPush Nachrichtendienst, sendet und empfängt in Echtzeit.",
+        "link": "https://ntfy.adminforge.de",
+        "info_link": "https://adminforge.de/services/ntfy-push-dienst/"
+      },
+      {
+        "name": "Gotify Push",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/gotify.png",
+        "description": "Nachrichtendienst zum Senden und Empfangen in Echtzeit.",
+        "link": "https://push.adminforge.de",
+        "info_link": "https://adminforge.de/services/gotify-push-dienst/"
+      }
+    ]
+  },
+  {
+    "name": "🖥️ Fernarbeit",
+    "services": [
+      {
+        "name": "RustDesk",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/rustdesk.png",
+        "description": "Remote-Desktop-Software als echte Alternative zu TeamViewer.",
+        "link": "https://deskforge.de",
+        "info_link": "https://adminforge.de/services/rustdesk-remote-desktop/"
+      },
+      {
+        "name": "Remote Desktop",
+        "icon": "https://adminforge.de/wp-content/uploads/2024/01/remotely.png",
+        "description": "Fernwartungs-Software um Benutzer aus der Ferne zu helfen.",
+        "link": "https://remote.adminforge.de",
+        "info_link": "https://adminforge.de/services/remotely-remote-desktop/"
+      }
+    ]
+  }
+]

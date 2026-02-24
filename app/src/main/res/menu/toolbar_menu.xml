@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_open_browser"
+        android:icon="@drawable/ic_open_browser"
+        android:title="Im Browser öffnen"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_more_vert"
+        android:title="Settings"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_settings_page"
+                android:title="Einstellungen" />
+            <item
+                android:id="@+id/action_website"
+                android:title="Webseite besuchen" />
+            <item
+                android:id="@+id/action_forum"
+                android:title="Forum" />
+            <item
+                android:id="@+id/action_contact"
+                android:title="Kontakt" />
+            <item
+                android:id="@+id/action_changelog"
+                android:title="Changelog" />
+            <item
+                android:id="@+id/action_update"
+                android:title="Auf Updates prüfen" />
+            <item
+                android:id="@+id/action_version"
+                android:title="v1.0.134"
+                android:enabled="false" />
+        </menu>
+    </item>
+</menu>

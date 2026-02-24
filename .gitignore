@@ -1,0 +1,27 @@
+# Build artifacts
+.gradle/
+build/
+.kotlin/
+captures/
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Sensitive files
+release.jks
+local.properties
+
+# Tools & Scripts (Internal/Secret)
+*.py
+build_release.sh.bak
+test_*.sh
+
+# OS / Misc
+.DS_Store
+Thumbs.db

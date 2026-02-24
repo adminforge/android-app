@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_open_browser"
+        android:icon="@drawable/ic_open_browser"
+        android:title="Im Browser öffnen"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_white"
+        android:title="Suche"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_more_vert"
+        android:title="Settings"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_update"
+                android:title="Auf Updates prüfen" />
+            <item
+                android:id="@+id/action_version"
+                android:title="v1.0.0"
+                android:enabled="false" />
+        </menu>
+    </item>
+</menu>
