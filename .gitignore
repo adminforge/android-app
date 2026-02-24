@@ -18,6 +18,7 @@ release.jks
 local.properties
 
 # Tools & Scripts (Internal/Secret)
+build_release.sh
 *.py
 build_release.sh.bak
 test_*.sh
