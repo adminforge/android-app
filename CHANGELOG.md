@@ -1,6 +1,14 @@
 # Changelog
 
+## [1.1.3] - 2026-02-24
+### Changed
+- Privacy & Security: Removed sensitive `REQUEST_INSTALL_PACKAGES` and `WRITE_EXTERNAL_STORAGE` permissions.
+- Update Mechanism: Refactored in-app update notifications to redirect to the official Gitea release page for safer manual updates.
+- Release Automation: Standardized APK naming convention to `adminforge-v[version].apk`.
+
 ## [1.1.2] - 2026-02-24
+### Changed
+- Privacy & Security: Removed sensitive permissions (Note: Re-released as 1.1.3 with correct naming).
 ### Changed
 - Privacy & Security: Removed sensitive `REQUEST_INSTALL_PACKAGES` and `WRITE_EXTERNAL_STORAGE` permissions.
 - Update Mechanism: Refactored in-app update notifications to redirect to the official Gitea release page for safer manual updates.
