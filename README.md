@@ -42,4 +42,4 @@ Lade die aktuellste Version direkt von unserem Git-Repository herunter:
 Dieses Projekt ist unter der **GNU GPL v3.0** lizenziert. Weitere Details findest du in der [LICENSE](LICENSE) Datei.
 
 ---
-Betrieben mit ❤️ und 🤖 von [adminForge](https://adminforge.de).
+Betrieben mit ❤️ und erstellt mit 🤖 von [adminForge](https://adminforge.de).
