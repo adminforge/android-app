@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.161] - 2026-02-24
+### Fixed
+- **Release Automation**: Fixed a bug where changelog notes were not correctly extracted for Gitea releases.
+
+## [1.0.160] - 2026-02-24
+### Changed
+- **OTA Migration**: Pivot to 100% Git-centric distribution via Gitea releases and `version.json`.
+- **Infrastructure**: Removed legacy `rsync` deployment logic.
+- **Gitea Sync**: Automated changelog notes extraction for Gitea release descriptions.
+
 ## [1.0.159] - 2026-02-24
 ### Added
 - **Release Automation**: Integrated Gitea "latest" link in README.
