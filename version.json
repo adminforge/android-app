@@ -1,5 +1,6 @@
 {
-  "versionCode": 345,
-  "versionName": "1.1.9",
-  "notes": "1.1.9 Release\n\nSee Git history for changes."
+  "versionCode": 350,
+  "versionName": "1.2.0",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.0/adminforge-v1.2.0.apk",
+  "notes": "1.2.0 Release\n\nSee Git history for changes."
 }

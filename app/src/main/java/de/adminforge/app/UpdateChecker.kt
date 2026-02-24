@@ -120,15 +120,97 @@ object UpdateChecker {
 
     private fun showUpdateDialog(context: Context, json: org.json.JSONObject) {
         val versionName = json.optString("versionName", "Unbekannt")
+        val downloadUrl = json.optString("downloadUrl", "")
+
         AlertDialog.Builder(context)
             .setTitle("Neues Update verfügbar ($versionName)")
-            .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du die Release-Seite öffnen, um sie herunterzuladen?")
-            .setPositiveButton("Öffnen") { _, _ ->
-                val releaseUrl = "https://git.adminforge.de/adminforge/android-app/releases"
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(releaseUrl))
-                context.startActivity(intent)
+            .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du sie jetzt installieren?")
+            .setPositiveButton("Installieren") { _, _ ->
+                if (downloadUrl.isNotEmpty()) {
+                    downloadAndInstall(context, downloadUrl)
+                } else {
+                    // Fallback to release page if no download URL
+                    val releaseUrl = "https://git.adminforge.de/adminforge/android-app/releases"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(releaseUrl))
+                    context.startActivity(intent)
+                }
             }
             .setNegativeButton("Später", null)
             .show()
+    }
+
+    private fun downloadAndInstall(context: Context, downloadUrl: String) {
+        val progressDialog = ProgressDialog(context)
+        progressDialog.setMessage("Lade Update herunter...")
+        progressDialog.setIndeterminate(false)
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
+        progressDialog.max = 100
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+
+        thread {
+            try {
+                val url = URL(downloadUrl)
+                val connection = url.openConnection() as HttpURLConnection
+                connection.connect()
+
+                if (connection.responseCode != HttpURLConnection.HTTP_OK) {
+                    throw Exception("Server returned HTTP ${connection.responseCode}")
+                }
+
+                val fileLength = connection.contentLength
+                val input = connection.inputStream
+                val updateDir = File(context.cacheDir, "updates")
+                if (!updateDir.exists()) updateDir.mkdirs()
+                val apkFile = File(updateDir, "adminforge-update.apk")
+                val output = FileOutputStream(apkFile)
+
+                val data = ByteArray(4096)
+                var total: Long = 0
+                var count: Int
+                while (input.read(data).also { count = it } != -1) {
+                    total += count.toLong()
+                    if (fileLength > 0) {
+                        Handler(Looper.getMainLooper()).post {
+                            progressDialog.progress = (total * 100 / fileLength).toInt()
+                        }
+                    }
+                    output.write(data, 0, count)
+                }
+
+                output.flush()
+                output.close()
+                input.close()
+
+                Handler(Looper.getMainLooper()).post {
+                    progressDialog.dismiss()
+                    installApk(context, apkFile)
+                }
+            } catch (e: Exception) {
+                Log.e("UpdateChecker", "Download failed", e)
+                Handler(Looper.getMainLooper()).post {
+                    progressDialog.dismiss()
+                    Toast.makeText(context, "Download fehlgeschlagen: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun installApk(context: Context, file: File) {
+        try {
+            val contentUri = FileProvider.getUriForFile(
+                context,
+                "${context.packageName}.fileprovider",
+                file
+            )
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.setDataAndType(contentUri, "application/vnd.android.package-archive")
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Log.e("UpdateChecker", "Install failed", e)
+            Toast.makeText(context, "Installation fehlgeschlagen", Toast.LENGTH_LONG).show()
+        }
     }
 }
