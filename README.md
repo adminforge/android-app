@@ -23,12 +23,14 @@ Die offizielle Android-App für [adminForge](https://adminforge.de) – Deine An
 - **System-Status**: Echtzeit-Monitoring aller adminForge-Infrastrukturen.
 - **Native Experience**: Modernes Design mit OLED-Schwarz-Modus und intuitiver Navigation.
 - **Benachrichtigungen**: Support für UnifiedPush (z.B. via ntfy) und zuverlässiges Background-Polling.
-- **Updates**: Integrierte Update-Funktion für die neuesten Features.
 
-## Installation
+## Download & Installation
 
-Lade die aktuellste Version direkt von unserem Git-Repository herunter:  
-👉 **[git.adminforge.de/adminforge/android-app/releases/latest](https://git.adminforge.de/adminforge/android-app/releases/latest)**
+Diese Version der App ist speziell für den **F-Droid Store** optimiert:
+- **Keine Self-Updates**: Updates werden ausschließlich über den F-Droid Client verwaltet.
+- **Application ID**: `de.adminforge.app.fdroid` (erlaubt die parallele Installation zur Gitea-Version).
+
+[F-Droid Store (folgt)]()
 
 ## Technologien
 

@@ -43,13 +43,6 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
         // Immediate sync of status and news
         NotificationWorker.runOnce(this)
         
-        // Setup background worker for updates (daily)
-        val updateWorkRequest = PeriodicWorkRequestBuilder<UpdateWorker>(24, TimeUnit.HOURS).build()
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "AppUpdateSync",
-            ExistingPeriodicWorkPolicy.KEEP,
-            updateWorkRequest
-        )
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -239,7 +232,6 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
             }
         }
 
-        UpdateChecker.checkOnStartup(this)
     }
 
     override fun onStatusUpdated() {
@@ -322,10 +314,6 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
                 imm.showSoftInput(searchBox, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT)
                 val scrollView = findViewById<android.widget.ScrollView>(R.id.scrollView)
                 scrollView?.smoothScrollTo(0, 0)
-                true
-            }
-            R.id.action_update -> {
-                UpdateChecker.checkForUpdateInteractive(this)
                 true
             }
             R.id.action_forum -> {

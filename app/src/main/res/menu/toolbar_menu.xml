@@ -30,9 +30,6 @@
                 android:id="@+id/action_changelog"
                 android:title="Changelog" />
             <item
-                android:id="@+id/action_update"
-                android:title="Auf Updates prüfen" />
-            <item
                 android:id="@+id/action_version"
                 android:title="v1.0.134"
                 android:enabled="false" />
