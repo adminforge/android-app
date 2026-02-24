@@ -27,8 +27,8 @@
                 android:id="@+id/action_contact"
                 android:title="Kontakt" />
             <item
-                android:id="@+id/action_changelog"
-                android:title="Changelog" />
+                android:id="@+id/action_git"
+                android:title="Quellcode (Git)" />
             <item
                 android:id="@+id/action_update"
                 android:title="Auf Updates prüfen" />

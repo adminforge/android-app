@@ -58,10 +58,6 @@
 
 
 
-        <activity
-            android:name=".ChangelogActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".SettingsActivity"
