@@ -6,6 +6,13 @@ Die offizielle Android-App für [adminForge](https://adminforge.de) – Deine An
   <img src="https://adminforge.de/wp-content/uploads/2024/09/adminforge-small-round-200x200-1.png" alt="adminForge Logo" />
 </p>
 
+<p align="center">
+  <img src="screenshots/screenshot_1.png" width="22%" />
+  <img src="screenshots/screenshot_2.png" width="22%" />
+  <img src="screenshots/screenshot_3.png" width="22%" />
+  <img src="screenshots/screenshot_4.png" width="22%" />
+</p>
+
 ## Features
 
 - **Service-Verzeichnis**: Schneller Zugriff auf alle adminForge-Dienste (DNS, Metasuche, Cloud, Messenger u.v.m.).
