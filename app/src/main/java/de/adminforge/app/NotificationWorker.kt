@@ -63,8 +63,8 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Coroutine
             val newsOk = NewsPoller.performFetchSuspend(applicationContext)
             val statusOk = StatusPoller.performFetchSuspend(applicationContext)
 
-            checkNews(prefs)
-            checkStatus(prefs)
+            if (newsOk) checkNews(prefs)
+            if (statusOk) checkStatus(prefs)
 
             if (!newsOk || !statusOk) {
                 return Result.retry()

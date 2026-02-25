@@ -98,39 +98,34 @@ object StatusPoller {
         
         try {
             val schemaJson = URL("https://status.adminforge.de/api/status-page/adminforge").openStream().bufferedReader().use { it.readText() }
-            val heartbeatJson = try {
-                URL("https://status.adminforge.de/api/status-page/heartbeat/adminforge").openStream().bufferedReader().use { it.readText() }
-            } catch (e: Exception) { null }
+            // Heartbeat check is CRITICAL. If this fails, we can't determine status, so we must abort/retry.
+            val heartbeatJson = URL("https://status.adminforge.de/api/status-page/heartbeat/adminforge").openStream().bufferedReader().use { it.readText() }
 
             val prefs = ctx.getSharedPreferences("adminforge_prefs", Context.MODE_PRIVATE)
-            prefs.edit()
-                .putString("cached_status_groups", schemaJson)
-                .putString("cached_status_heartbeats", heartbeatJson)
-                .apply()
+            val editor = prefs.edit()
+            editor.putString("cached_status_groups", schemaJson)
+            editor.putString("cached_status_heartbeats", heartbeatJson)
 
             var offlineCount = 0
-            if (heartbeatJson != null) {
-                val heartbeatData: Map<String, Any> = gson.fromJson(heartbeatJson, object : TypeToken<Map<String, Any>>() {}.type)
-                val list = heartbeatData["heartbeatList"] as? Map<String, List<Map<String, Any>>>
-                list?.forEach { (_, heartbeats) ->
-                    if (heartbeats.isNotEmpty()) {
-                        val latest = heartbeats.last()
-                        val status = (latest["status"] as? Double)?.toInt() ?: 3
-                        if (status == 0 || status == 2) offlineCount++
-                    }
+            val heartbeatData: Map<String, Any> = gson.fromJson(heartbeatJson, object : TypeToken<Map<String, Any>>() {}.type)
+            val list = heartbeatData["heartbeatList"] as? Map<String, List<Map<String, Any>>>
+            list?.forEach { (_, heartbeats) ->
+                if (heartbeats.isNotEmpty()) {
+                    val latest = heartbeats.last()
+                    val status = (latest["status"] as? Double)?.toInt() ?: 3
+                    if (status == 0 || status == 2) offlineCount++
                 }
             }
             
-            prefs.edit()
-                .putInt("offline_status_count", offlineCount)
-                .apply()
+            editor.putInt("offline_status_count", offlineCount)
+            editor.apply()
 
             withContext(Dispatchers.Main) {
                 listeners.forEach { it.onStatusUpdated() }
             }
             return@withContext true
         } catch (e: Exception) {
-            Log.e("StatusPoller", "Error fetching status", e)
+            Log.e("StatusPoller", "Error fetching status (Suspend)", e)
             withContext(Dispatchers.Main) {
                 listeners.forEach { it.onStatusUpdateFailed() }
             }
@@ -144,34 +139,27 @@ object StatusPoller {
         
         thread {
             try {
-                // We can reuse the same logic
                 val schemaJson = URL("https://status.adminforge.de/api/status-page/adminforge").openStream().bufferedReader().use { it.readText() }
-                val heartbeatJson = try {
-                    URL("https://status.adminforge.de/api/status-page/heartbeat/adminforge").openStream().bufferedReader().use { it.readText() }
-                } catch (e: Exception) { null }
+                val heartbeatJson = URL("https://status.adminforge.de/api/status-page/heartbeat/adminforge").openStream().bufferedReader().use { it.readText() }
 
                 val prefs = ctx.getSharedPreferences("adminforge_prefs", Context.MODE_PRIVATE)
-                prefs.edit()
-                    .putString("cached_status_groups", schemaJson)
-                    .putString("cached_status_heartbeats", heartbeatJson)
-                    .apply()
+                val editor = prefs.edit()
+                editor.putString("cached_status_groups", schemaJson)
+                editor.putString("cached_status_heartbeats", heartbeatJson)
 
                 var offlineCount = 0
-                if (heartbeatJson != null) {
-                    val heartbeatData: Map<String, Any> = gson.fromJson(heartbeatJson, object : TypeToken<Map<String, Any>>() {}.type)
-                    val list = heartbeatData["heartbeatList"] as? Map<String, List<Map<String, Any>>>
-                    list?.forEach { (_, heartbeats) ->
-                        if (heartbeats.isNotEmpty()) {
-                            val latest = heartbeats.last()
-                            val status = (latest["status"] as? Double)?.toInt() ?: 3
-                            if (status == 0 || status == 2) offlineCount++
-                        }
+                val heartbeatData: Map<String, Any> = gson.fromJson(heartbeatJson, object : TypeToken<Map<String, Any>>() {}.type)
+                val list = heartbeatData["heartbeatList"] as? Map<String, List<Map<String, Any>>>
+                list?.forEach { (_, heartbeats) ->
+                    if (heartbeats.isNotEmpty()) {
+                        val latest = heartbeats.last()
+                        val status = (latest["status"] as? Double)?.toInt() ?: 3
+                        if (status == 0 || status == 2) offlineCount++
                     }
                 }
                 
-                prefs.edit()
-                    .putInt("offline_status_count", offlineCount)
-                    .apply()
+                editor.putInt("offline_status_count", offlineCount)
+                editor.apply()
 
                 handler.post {
                     listeners.forEach { it.onStatusUpdated() }
