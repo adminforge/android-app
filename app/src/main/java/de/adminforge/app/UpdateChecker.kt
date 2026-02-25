@@ -135,7 +135,10 @@ object UpdateChecker {
         val versionName = json.optString("versionName", "Unbekannt")
         val downloadUrl = json.optString("downloadUrl", "")
 
-        com.google.android.material.dialog.MaterialAlertDialogBuilder(context)
+        // Explicitly wrap context with our theme to ensure Material attributes like colorSurface are available
+        val themedContext = androidx.appcompat.view.ContextThemeWrapper(context, R.style.Theme_AdminForge)
+
+        com.google.android.material.dialog.MaterialAlertDialogBuilder(themedContext)
             .setTitle("Neues Update verfügbar ($versionName)")
             .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du sie jetzt installieren?")
             .setPositiveButton("Installieren") { _, _ ->
