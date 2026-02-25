@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.3.1] - 2026-02-25
+### Fixed
+- Test-Release zur Verifizierung des In-App Update Prozesses (Finaler Fix).
+
 ## [1.2.3] - 2026-02-25
 ### Fixed
 - Test-Release zur Verifizierung des In-App Update Prozesses.
