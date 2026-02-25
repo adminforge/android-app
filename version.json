@@ -2,5 +2,5 @@
   "versionCode": 356,
   "versionName": "1.2.2",
   "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.2/adminforge-v1.2.2.apk",
-  "notes": "1.2.2 Release\n\n- Fix: Persistent theme crash when checking for updates\n- Fix: Notification reliability improvements"
+  "notes": "1.2.2 Release\n\n- UI: Resolved a crash when opening the update dialog.\n- UI: Status bar is now black in light mode.\n- Update: Switched to stable AlertDialog for better compatibility.\n- Update: Switched to Gitea Release API for reliable detection.\n- Notifications: Fixed false recovery alerts and improved reliability."
 }
