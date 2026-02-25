@@ -1,6 +1,6 @@
 {
-  "versionCode": 355,
-  "versionName": "1.2.1",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.1/adminforge-v1.2.1.apk",
-  "notes": "1.2.1 Release\n\nSee Git history for changes."
+  "versionCode": 356,
+  "versionName": "1.2.2",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.2/adminforge-v1.2.2.apk",
+  "notes": "1.2.2 Release\n\n### Fixed\n- Notifications: Improved reliability by handling network errors gracefully during background polling.\n- Status: Prevented false recovery notifications (\"All systems reachable\") caused by interrupted heartbeat API requests.\n- Logic: Refined background service to only trigger notifications if the data fetch was explicitly successful.\n- Update: Improved in-app update discovery by using the Gitea Release API."
 }
