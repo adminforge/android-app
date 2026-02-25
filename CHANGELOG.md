@@ -1,13 +1,5 @@
 # Changelog
 
-## [1.2.3.1] - 2026-02-25
-### Fixed
-- Test-Release zur Verifizierung des In-App Update Prozesses (Finaler Fix).
-
-## [1.2.3] - 2026-02-25
-### Fixed
-- Test-Release zur Verifizierung des In-App Update Prozesses.
-
 ## [1.2.2] - 2026-02-25
 ### Fixed
 - UI: Resolved a crash when opening the update dialog due to missing Material theme attributes.
