@@ -5,6 +5,7 @@
 - Notifications: Improved reliability by handling network errors gracefully during background polling.
 - Status: Prevented false recovery notifications ("All systems reachable") caused by interrupted heartbeat API requests.
 - Logic: Refined background service to only trigger notifications if the data fetch was explicitly successful.
+- Update: Improved in-app update discovery by using the Gitea Release API.
 
 ## [1.2.1] - 2026-02-24
 ### Fixed
