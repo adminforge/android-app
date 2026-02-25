@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3.1] - 2026-02-25
+### Fixed
+- Test-Release für In-App Update (Fix Crash).
+
+## [1.2.3] - 2026-02-25
+### Fixed
+- Test-Release für In-App Update.
+
 ## [1.2.2] - 2026-02-25
 ### Fixed
 - Notifications: Improved reliability by handling network errors gracefully during background polling.
