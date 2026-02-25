@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.2] - 2026-02-25
+### Fixed
+- Notifications: Improved reliability by handling network errors gracefully during background polling.
+- Status: Prevented false recovery notifications ("All systems reachable") caused by interrupted heartbeat API requests.
+- Logic: Refined background service to only trigger notifications if the data fetch was explicitly successful.
+
 ## [1.2.1] - 2026-02-24
 ### Fixed
 - UI: Improved update dialog contrast in light mode on Android 14.
