@@ -1,6 +1,6 @@
 {
-  "versionCode": 357,
-  "versionName": "1.2.3",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.3/adminforge-v1.2.3.apk",
-  "notes": "1.2.3 Release\n\n### Fixed\n- Test-Release für In-App Update."
+  "versionCode": 358,
+  "versionName": "1.2.3.1",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.3.1/adminforge-v1.2.3.1.apk",
+  "notes": "1.2.3.1 Release\n\n### Fixed\n- Test-Release für In-App Update (Fix Crash)."
 }
