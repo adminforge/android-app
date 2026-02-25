@@ -172,7 +172,7 @@ object UpdateChecker {
 
                 val fileLength = connection.contentLength
                 val input = connection.inputStream
-                val updateDir = File(context.cacheDir, "updates")
+                val updateDir = File(context.getExternalFilesDir(null), "updates")
                 if (!updateDir.exists()) updateDir.mkdirs()
                 val apkFile = File(updateDir, "adminforge-update.apk")
                 val output = FileOutputStream(apkFile)
@@ -220,10 +220,13 @@ object UpdateChecker {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
             context.startActivity(intent)
         } catch (e: Exception) {
             Log.e("UpdateChecker", "Install failed", e)
-            Toast.makeText(context, "Installation fehlgeschlagen", Toast.LENGTH_LONG).show()
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(context, "Installation fehlgeschlagen: ${e.message}", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }
