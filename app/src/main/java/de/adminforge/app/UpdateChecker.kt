@@ -18,22 +18,18 @@ import java.net.URL
 import kotlin.concurrent.thread
 
 object UpdateChecker {
-    private const val VERSION_JSON_URL = "https://git.adminforge.de/adminforge/android-app/raw/branch/main/version.json"
-    private const val PREFS_NAME = "adminforge_prefs"
+    private const val GITEA_RELEASES_API = "https://git.adminforge.de/api/v1/repos/adminforge/android-app/releases?limit=1"
+    private const val RAW_FILE_BASE = "https://git.adminforge.de/adminforge/android-app/raw/tag"
     
     // session flag to prevent redundant checks on every activity navigation
     private var hasCheckedThisSession = false
     
-    // Background check
     fun checkSilently(context: Context) {
         thread {
             try {
-                val jsonStr = fetchUrl(VERSION_JSON_URL) ?: return@thread
-                val json = org.json.JSONObject(jsonStr)
+                val json = fetchLatestVersionInfo() ?: return@thread
                 val latestCode = json.optInt("versionCode", 0)
-                
                 val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
-                
                 if (latestCode > currentCode) {
                     Log.d("UpdateChecker", "New update detected silently: Code $latestCode")
                 }
@@ -49,8 +45,7 @@ object UpdateChecker {
         
         thread {
             try {
-                val jsonStr = fetchUrl(VERSION_JSON_URL) ?: return@thread
-                val json = org.json.JSONObject(jsonStr)
+                val json = fetchLatestVersionInfo() ?: return@thread
                 val latestCode = json.optInt("versionCode", 0)
                 val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
                 
@@ -69,7 +64,6 @@ object UpdateChecker {
         }
     }
 
-    // Interactive check when user clicks "Auf Updates prüfen"
     fun checkForUpdateInteractive(context: Context) {
         val progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Prüfe auf Updates...")
@@ -78,12 +72,11 @@ object UpdateChecker {
 
         thread {
             try {
-                val jsonStr = fetchUrl(VERSION_JSON_URL)
+                val json = fetchLatestVersionInfo()
                 
                 Handler(Looper.getMainLooper()).post {
                     progressDialog.dismiss()
-                    if (jsonStr != null) {
-                        val json = org.json.JSONObject(jsonStr)
+                    if (json != null) {
                         val latestCode = json.optInt("versionCode", 0)
                         val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
                         
@@ -103,6 +96,26 @@ object UpdateChecker {
                     Toast.makeText(context, "Fehler bei der Update-Prüfung", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun fetchLatestVersionInfo(): org.json.JSONObject? {
+        return try {
+            // 1. Get latest release from API
+            val releasesJsonStr = fetchUrl(GITEA_RELEASES_API) ?: return null
+            val releases = org.json.JSONArray(releasesJsonStr)
+            if (releases.length() == 0) return null
+            
+            val latestRelease = releases.getJSONObject(0)
+            val tagName = latestRelease.getString("tag_name")
+            
+            // 2. Fetch version.json from that specific tag
+            val versionJsonUrl = "$RAW_FILE_BASE/$tagName/version.json"
+            val versionJsonStr = fetchUrl(versionJsonUrl) ?: return null
+            org.json.JSONObject(versionJsonStr)
+        } catch (e: Exception) {
+            Log.e("UpdateChecker", "Error fetching version info", e)
+            null
         }
     }
 
@@ -129,7 +142,6 @@ object UpdateChecker {
                 if (downloadUrl.isNotEmpty()) {
                     downloadAndInstall(context, downloadUrl)
                 } else {
-                    // Fallback to release page if no download URL
                     val releaseUrl = "https://git.adminforge.de/adminforge/android-app/releases"
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(releaseUrl))
                     context.startActivity(intent)
