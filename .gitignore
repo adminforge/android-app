@@ -13,12 +13,12 @@ captures/
 *.iml
 *.iws
 
-# Sensitive files
-release.jks
-local.properties
-
-# Tools & Scripts (Internal/Secret)
+# Scripts
 *.sh
+build_release.sh
+update_gitea_releases.py
+publish_v1.2.2.py
+update_release_v1.2.2.py
 *.py
 
 # OS / Misc
