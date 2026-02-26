@@ -2,5 +2,5 @@
   "versionCode": 359,
   "versionName": "1.2.3",
   "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.3/adminforge-v1.2.3.apk",
-  "notes": "1.2.3 Release\n\n- UI: Endgültiger Fix für den Crash im Update-Dialog.\n- UI: Schwarze Statusleiste im hellen Modus.\n- Update: Korrektur für Installationsfehler auf Android 14/15/16.\n- Notifications: Verbesserte Zuverlässigkeit und Fehlerbehandlung."
+  "notes": "1.2.3 Release\n\n### **Fixed**\n- UI: Resolved a crash when opening the update dialog.\n- UI: Enforced pitch-black status bar in light mode.\n- Update: Switched to stable AlertDialog for reliable updates.\n- Permissions: Corrected FileProvider for Android 14/15/16 installation.\n- Notifications: Improved reliability and error handling."
 }
