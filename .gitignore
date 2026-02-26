@@ -24,3 +24,6 @@ update_release_v1.2.2.py
 # OS / Misc
 .DS_Store
 Thumbs.db
+
+# AI Agents
+.agent/
