@@ -1,12 +1,14 @@
 # Changelog
 
-## [1.2.2] - 2026-02-25
-### Fixed
+## [1.2.3] - 2026-02-26
+### **Fixed**
 - UI: Resolved a crash when opening the update dialog due to missing Material theme attributes.
-- Notifications: Improved reliability by handling network errors gracefully during background polling.
-- Status: Prevented false recovery notifications ("All systems reachable") caused by interrupted heartbeat API requests.
-- Logic: Refined background service to only trigger notifications if the data fetch was explicitly successful.
-- Update: Improved in-app update discovery by using the Gitea Release API.
+- UI: Enforced pitch-black status bar in light mode for improved contrast.
+- Update: Switched to stable `androidx.appcompat.app.AlertDialog` for reliable updates on all devices.
+- Permissions: Corrected `FileProvider` configuration for seamless APK installation on Android 14/15/16.
+- Notifications: Improved reliability and prevented false recovery alerts.
+
+## [1.2.2] - 2026-02-25
 
 ## [1.2.1] - 2026-02-24
 ### Fixed
