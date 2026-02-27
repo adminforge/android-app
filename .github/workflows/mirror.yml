@@ -44,3 +44,60 @@ jobs:
             git commit -m "Mirror from adminForge Android-App ($(date))"
             git push origin main --force-with-lease
           fi
+
+      - name: GitHub CLI installieren
+        run: |
+          # gh CLI für GitHub API (einfacher als REST)
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install gh -y
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Releases von Gitea zu GitHub mirroren
+        env:
+          GITEA_TOKEN: ${{ secrets.TOKEN }}
+          GITEA_URL: https://git.adminforge.de
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          # Gitea Releases laden (JSON)
+          GITEA_RELEASES=$(curl -s -H "Authorization: token $GITEA_TOKEN" \
+            "$GITEA_URL/api/v1/repos/adminforge/android-app/releases?limit=50")
+          
+          echo "$GITEA_RELEASES" | jq -r '.[] | select(.tag_name != null) | "\(.tag_name)|\(.name)|\(.body)|\(.published_at)"' | while IFS='|' read -r TAG TITLE BODY PUBLISHED; do
+            if [ -z "$TAG" ]; then continue; fi
+            
+            # Release in GitHub prüfen/anlegen (gh CLI)
+            EXISTING=$(gh api repos/$GITHUB_REPO/releases/tags/$TAG --jq '.[0].id' 2>/dev/null || echo "")
+            
+            if [ -z "$EXISTING" ]; then
+              # Neues Release erstellen
+              echo "Neues Release erstellen: $TAG"
+              gh release create "$TAG" "$TITLE" --notes "$BODY" --generate-notes=false
+            else
+              # Bestehendes Release updaten (Notes überschreiben)
+              echo "Release updaten: $TAG"
+              gh api repos/$GITHUB_REPO/releases/tags/$TAG -X PATCH \
+                -f name="$TITLE" \
+                -f body="$BODY" \
+                -f published_at="$PUBLISHED"
+            fi
+            
+            # Assets mirroren (pro Release)
+            curl -s -H "Authorization: token $GITEA_TOKEN" \
+              "$GITEA_URL/api/v1/repos/adminforge/android-app/releases/tags/$TAG/assets" | \
+              jq -r '.[].name' | while read -r ASSET_NAME; do
+              
+              # Asset von Gitea downloaden
+              curl -L -H "Authorization: token $GITEA_TOKEN" \
+                -o "/tmp/$ASSET_NAME" \
+                "$GITEA_URL/api/v1/repos/adminforge/android-app/releases/assets/$ASSET_NAME"
+              
+              # Asset zu GitHub hochladen (nur wenn neu/unterschiedlich)
+              if [ -f "/tmp/$ASSET_NAME" ]; then
+                gh release upload "$TAG" "/tmp/$ASSET_NAME" --clobber
+                rm "/tmp/$ASSET_NAME"
+              fi
+            done
+          done
