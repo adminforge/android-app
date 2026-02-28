@@ -1,6 +1,6 @@
 {
-  "versionCode": 359,
-  "versionName": "1.2.3",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.3/adminforge-v1.2.3.apk",
-  "notes": "1.2.3 Release\n\n### **Fixed**\n- UI: Resolved a crash when opening the update dialog.\n- UI: Enforced pitch-black status bar in light mode.\n- Update: Switched to stable AlertDialog for reliable updates.\n- Permissions: Corrected FileProvider for Android 14/15/16 installation.\n- Notifications: Improved reliability and error handling."
+  "versionCode": 361,
+  "versionName": "1.2.4",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.4/adminforge-v1.2.4.apk",
+  "notes": "Added\n    Feature: Pin services (favorites appear at the top)."
 }

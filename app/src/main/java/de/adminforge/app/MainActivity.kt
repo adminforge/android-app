@@ -76,11 +76,45 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
         }
 
         val container = findViewById<LinearLayout>(R.id.items_container)
+        val searchBox = findViewById<android.widget.EditText>(R.id.search_box)
         val inflater = LayoutInflater.from(this)
         val allServices = loadServices()
 
+        val allCategories = mutableListOf<Category>()
+        try {
+            val jsonString = resources.openRawResource(R.raw.services).bufferedReader().use { it.readText() }
+            val categoriesJson = JSONArray(jsonString)
+            for (i in 0 until categoriesJson.length()) {
+                val categoryObj = categoriesJson.getJSONObject(i)
+                val servicesArr = categoryObj.getJSONArray("services")
+                val servicesList = mutableListOf<Service>()
+                for (j in 0 until servicesArr.length()) {
+                    val serviceObj = servicesArr.getJSONObject(j)
+                    servicesList.add(Service(
+                        name = serviceObj.getString("name"),
+                        iconUrl = serviceObj.getString("icon"),
+                        description = serviceObj.getString("description"),
+                        link = serviceObj.getString("link"),
+                        infoLink = serviceObj.optString("info_link", "")
+                    ))
+                }
+                allCategories.add(Category(categoryObj.getString("name"), servicesList))
+            }
+        } catch (e: Exception) { e.printStackTrace() }
+
+        fun getPinnedLinks(): Set<String> {
+            return prefs.getStringSet("pinned_services", emptySet()) ?: emptySet()
+        }
+
+        // Forward declaration trick or just move them properly
+        // In Kotlin, local functions can refer to each other if they are in the same block
+        // but the compiler sometimes struggles with the order.
+        
+        var refreshListFunc: ((String) -> Unit)? = null
+
         fun renderServices(items: List<ListItem>) {
             container.removeAllViews()
+            val pinnedLinks = getPinnedLinks()
 
             items.forEach { item ->
                 when (item) {
@@ -96,6 +130,24 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
                         view.findViewById<TextView>(R.id.service_name).text = service.name
                         view.findViewById<TextView>(R.id.service_description).text = service.description
                         val iconView = view.findViewById<ImageView>(R.id.service_icon)
+                        val pinBtn = view.findViewById<ImageView>(R.id.btn_pin)
+
+                        val isPinned = pinnedLinks.contains(service.link)
+                        pinBtn.setImageResource(if (isPinned) R.drawable.ic_pin else R.drawable.ic_pin_outline)
+                        pinBtn.setColorFilter(if (isPinned) android.graphics.Color.parseColor("#FFD700") else android.graphics.Color.GRAY)
+                        
+                        pinBtn.setOnClickListener {
+                            val pinned = getPinnedLinks().toMutableSet()
+                            if (pinned.contains(service.link)) {
+                                pinned.remove(service.link)
+                            } else {
+                                pinned.add(service.link)
+                            }
+                            prefs.edit().putStringSet("pinned_services", pinned).apply()
+                            
+                            val currentQuery = searchBox.text.toString()
+                            refreshListFunc?.invoke(currentQuery)
+                        }
                         
                         val cacheDir = java.io.File(filesDir, "icons")
                         if (!cacheDir.exists()) cacheDir.mkdirs()
@@ -131,66 +183,67 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
             }
         }
 
-        val searchBox = findViewById<android.widget.EditText>(R.id.search_box)
-        
-        // Let's load categories and services separately once to make filtering easier
-        val allCategories = mutableListOf<Category>()
-        try {
-            val jsonString = resources.openRawResource(R.raw.services).bufferedReader().use { it.readText() }
-            val categoriesJson = JSONArray(jsonString)
-            for (i in 0 until categoriesJson.length()) {
-                val categoryObj = categoriesJson.getJSONObject(i)
-                val servicesArr = categoryObj.getJSONArray("services")
-                val servicesList = mutableListOf<Service>()
-                for (j in 0 until servicesArr.length()) {
-                    val serviceObj = servicesArr.getJSONObject(j)
-                    servicesList.add(Service(
-                        name = serviceObj.getString("name"),
-                        iconUrl = serviceObj.getString("icon"),
-                        description = serviceObj.getString("description"),
-                        link = serviceObj.getString("link"),
-                        infoLink = serviceObj.optString("info_link", "")
-                    ))
+        fun refreshList(query: String) {
+            val lowercaseQuery = query.lowercase()
+            val finalItems = mutableListOf<ListItem>()
+            val pinnedLinks = getPinnedLinks()
+
+            // 1. Handle Pinned Services
+            val pinnedServices = mutableListOf<Service>()
+            allCategories.forEach { cat ->
+                cat.services.forEach { service ->
+                    if (pinnedLinks.contains(service.link)) {
+                        if (lowercaseQuery.isEmpty() || 
+                            service.name.lowercase().contains(lowercaseQuery) || 
+                            service.description.lowercase().contains(lowercaseQuery)) {
+                            pinnedServices.add(service)
+                        }
+                    }
                 }
-                allCategories.add(Category(categoryObj.getString("name"), servicesList))
             }
-        } catch (e: Exception) { e.printStackTrace() }
+
+            if (pinnedServices.isNotEmpty()) {
+                finalItems.add(ListItem.CategoryItem(Category("Deine Favoriten", pinnedServices)))
+                pinnedServices.forEach { finalItems.add(ListItem.ServiceItem(it)) }
+            }
+
+            // 2. Handle Regular Categories
+            if (lowercaseQuery.isEmpty()) {
+                allCategories.forEach { category: Category ->
+                    finalItems.add(ListItem.CategoryItem(category))
+                    category.services.forEach { service: Service ->
+                        finalItems.add(ListItem.ServiceItem(service))
+                    }
+                }
+            } else {
+                allCategories.forEach { category: Category ->
+                    val matchingServices: List<Service> = category.services.filter { service: Service ->
+                        service.name.lowercase().contains(lowercaseQuery) || 
+                        service.description.lowercase().contains(lowercaseQuery) 
+                    }
+                    if (matchingServices.isNotEmpty()) {
+                        finalItems.add(ListItem.CategoryItem(category))
+                        matchingServices.forEach { service: Service ->
+                            finalItems.add(ListItem.ServiceItem(service))
+                        }
+                    }
+                }
+            }
+            renderServices(finalItems)
+        }
+        
+        refreshListFunc = ::refreshList
 
         searchBox.addTextChangedListener(object : android.text.TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s.toString().lowercase()
-                val filteredItems = mutableListOf<ListItem>()
-
-                if (query.isEmpty()) {
-                    allCategories.forEach { cat ->
-                        filteredItems.add(ListItem.CategoryItem(cat))
-                        cat.services.forEach { filteredItems.add(ListItem.ServiceItem(it)) }
-                    }
-                } else {
-                    allCategories.forEach { cat ->
-                        val matchingServices = cat.services.filter { 
-                            it.name.lowercase().contains(query) || 
-                            it.description.lowercase().contains(query) 
-                        }
-                        if (matchingServices.isNotEmpty()) {
-                            filteredItems.add(ListItem.CategoryItem(cat))
-                            matchingServices.forEach { filteredItems.add(ListItem.ServiceItem(it)) }
-                        }
-                    }
-                }
-                renderServices(filteredItems)
+                refreshList(s.toString())
             }
             override fun afterTextChanged(s: android.text.Editable?) {}
         })
 
         // Initial render
-        val initialItems = mutableListOf<ListItem>()
-        allCategories.forEach { cat ->
-            initialItems.add(ListItem.CategoryItem(cat))
-            cat.services.forEach { initialItems.add(ListItem.ServiceItem(it)) }
-        }
-        renderServices(initialItems)
+        refreshList("")
 
         val scrollView = findViewById<android.widget.ScrollView>(R.id.scrollView) ?: null
 
