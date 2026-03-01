@@ -37,6 +37,13 @@ Lade die aktuellste Version direkt von unserem Git-Repository herunter:
 - **Push**: UnifiedPush Integration.
 - **Privacy**: Kein Tracking, keine Werbung, keine Google Play Services Abhängigkeit.
 
+## App Signature (Zertifikat)
+
+Alle offiziellen APK-Releases sind mit dem adminForge-Zertifikat signiert. Du kannst die Integrität der App mit folgendem SHA256-Fingerprint überprüfen:
+
+**SHA256 Fingerprint:**
+`D3:A9:7C:72:BB:24:F3:0B:34:68:74:99:0C:21:30:95:22:B5:58:62:8F:EB:14:B5:45:32:5D:FB:0F:0B:1D:F9`
+
 ## Lizenz
 
 Dieses Projekt ist unter der **GNU GPL v3.0** lizenziert. Weitere Details findest du in der [LICENSE](LICENSE) Datei.

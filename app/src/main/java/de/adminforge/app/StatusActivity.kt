@@ -52,7 +52,6 @@ class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
             StatusPoller.forceFetch(this)
         }
         
-        UpdateChecker.checkOnStartup(this)
     }
 
     override fun onResume() {
@@ -166,7 +165,6 @@ class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
                 startActivity(intent)
                 true
             }
-            R.id.action_update -> { UpdateChecker.checkForUpdateInteractive(this); true }
             R.id.action_settings_page -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)

@@ -25,6 +25,9 @@ update_release_v1.2.2.py
 .DS_Store
 Thumbs.db
 local.properties
+release.jks
+*.jks
+*.keystore
 
 # AI Agents
 .agent/

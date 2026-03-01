@@ -68,8 +68,6 @@ class NewsActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
             NewsPoller.forceFetch(this)
         }
 
-        UpdateChecker.checkOnStartup(this)
-        UpdateChecker.checkOnStartup(this)
     }
 
     private fun setupBottomNavigation() {
@@ -193,10 +191,6 @@ class NewsActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
             R.id.action_contact -> {
                 val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://adminforge.de/kontakt/"))
                 startActivity(intent)
-                true
-            }
-            R.id.action_update -> {
-                UpdateChecker.checkForUpdateInteractive(this)
                 true
             }
             R.id.action_settings_page -> {

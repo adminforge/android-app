@@ -89,7 +89,6 @@ class DonateActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Li
             }
         }
         
-        UpdateChecker.checkOnStartup(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -125,10 +124,6 @@ class DonateActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Li
             R.id.action_contact -> {
                 val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://adminforge.de/kontakt/"))
                 startActivity(intent)
-                true
-            }
-            R.id.action_update -> {
-                UpdateChecker.checkForUpdateInteractive(this)
                 true
             }
             R.id.action_settings_page -> {

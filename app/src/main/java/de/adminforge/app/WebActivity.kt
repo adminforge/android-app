@@ -153,7 +153,6 @@ class WebActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Liste
             finish()
         }
 
-        UpdateChecker.checkOnStartup(this)
     }
 
     override fun onResume() {
