@@ -214,6 +214,13 @@
         "description": "PeerTube ist eine dezentrale Alternative zu YouTube.",
         "link": "https://clip.place",
         "info_link": "https://adminforge.de/services/peertube/"
+      },
+      {
+        "name": "DeltaChat (Relay)",
+        "icon": "https://adminforge.de/wp-content/uploads/2026/03/delta_chat.png",
+        "description": "Dezentraler Messenger für Ende-zu-Ende verschlüsselte Nachrichten.",
+        "link": "https://chat.adminforge.de/",
+        "info_link": "https://adminforge.de/services/chatmail/"
       }
     ]
   },

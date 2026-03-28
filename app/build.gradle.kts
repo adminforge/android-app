@@ -20,7 +20,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "de.adminforge.app.fdroid"
+        applicationId = "de.adminforge.app"
         minSdk = 24
         targetSdk = 36
         versionCode = vCode

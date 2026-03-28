@@ -1,6 +1,6 @@
 {
-  "versionCode": 361,
-  "versionName": "1.2.4",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.4/adminforge-v1.2.4.apk",
-  "notes": "Added\n    Feature: Pin services (favorites appear at the top)."
+  "versionCode": 363,
+  "versionName": "1.2.5",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.5/adminforge-v1.2.5.apk",
+  "notes": "1.2.5 Release\n\n### Added\n- Feature: Added DeltaChat (Relay) service to Soziales & Kommunikation."
 }

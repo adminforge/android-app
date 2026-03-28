@@ -394,6 +394,10 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
                 startActivity(intent)
                 true
             }
+            R.id.action_update -> {
+                UpdateChecker.checkForUpdateInteractive(this)
+                true
+            }
             R.id.action_version -> true
             else -> super.onOptionsItemSelected(item)
         }

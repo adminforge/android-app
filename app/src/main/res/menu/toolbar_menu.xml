@@ -30,6 +30,9 @@
                 android:id="@+id/action_git"
                 android:title="Quellcode (Git)" />
             <item
+                android:id="@+id/action_update"
+                android:title="Auf Updates prüfen" />
+            <item
                 android:id="@+id/action_version"
                 android:title="v1.0.134"
                 android:enabled="false" />

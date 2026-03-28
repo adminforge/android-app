@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.5] - 2026-03-28
+### Added
+- Feature: Added DeltaChat (Relay) service to Soziales & Kommunikation.
+
 ## [1.2.4] - 2026-02-28
 ### Added
 - Feature: Pin services (favorites appear at the top in "Deine Favoriten" section).
