@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.6] - 2026-04-05
+### Removed
+- Removed: Kategorie "Alternative Frontends" mit 6 Diensten von der Startseite entfernt.
+
 ## [1.2.5] - 2026-03-28
 ### Added
 - Feature: Added DeltaChat (Relay) service to Soziales & Kommunikation.
