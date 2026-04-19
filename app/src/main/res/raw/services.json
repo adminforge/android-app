@@ -221,6 +221,13 @@
         "description": "Dezentraler Messenger für Ende-zu-Ende verschlüsselte Nachrichten.",
         "link": "https://chat.adminforge.de/",
         "info_link": "https://adminforge.de/services/chatmail/"
+      },
+      {
+        "name": "adminForge Mail",
+        "icon": "https://adminforge.de/wp-content/uploads/2026/04/mail-logo.png",
+        "description": "Sicheres E-Mail Hosting für Privatsphäre-Enthusiasten.",
+        "link": "https://mail.adminforge.de/",
+        "info_link": "https://adminforge.de/services/adminforge-mail/"
       }
     ]
   },
