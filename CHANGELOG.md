@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.8] - 2026-04-28
+### Removed
+- Removed: Kategorie "Alternative Frontends" nun komplett aus der App entfernt.
+
 ## [1.2.7] - 2026-04-19
 ### Added
 - Feature: Added adminForge Mail service to Soziales & Kommunikation.

@@ -1,6 +1,6 @@
 {
-  "versionCode": 365,
-  "versionName": "1.2.7",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.7/adminforge-v1.2.7.apk",
-  "notes": "1.2.7 Release\n\n### Added\n- Feature: Added adminForge Mail service to Soziales & Kommunikation."
+  "versionCode": 366,
+  "versionName": "1.2.8",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.8/adminforge-v1.2.8.apk",
+  "notes": "1.2.8 Release\n\n### Removed\n- Removed: Kategorie \"Alternative Frontends\" nun komplett aus der App entfernt."
 }
