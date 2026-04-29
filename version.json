@@ -1,6 +1,6 @@
 {
-  "versionCode": 366,
-  "versionName": "1.2.8",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.8/adminforge-v1.2.8.apk",
-  "notes": "1.2.8 Release\n\n### Removed\n- Removed: Kategorie \"Alternative Frontends\" nun komplett aus der App entfernt."
+  "versionCode": 367,
+  "versionName": "1.2.9",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.2.9/adminforge-v1.2.9.apk",
+  "notes": "1.2.9 Release\n\n### Added\n- Feature: Added FediSuite service to Soziales & Kommunikation.\n- Feature: Added Mini QR Code Generator service to Büro & Produktivität.\n### Changed\n- Refactor: Removed unused info_link field from all services to optimize app performance."
 }
