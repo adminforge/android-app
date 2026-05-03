@@ -87,8 +87,7 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
                         name = serviceObj.getString("name"),
                         iconUrl = serviceObj.getString("icon"),
                         description = serviceObj.getString("description"),
-                        link = serviceObj.getString("link"),
-                        infoLink = serviceObj.optString("info_link", "")
+                        link = serviceObj.getString("link")
                     ))
                 }
                 allCategories.add(Category(categoryObj.getString("name"), servicesList))
@@ -422,8 +421,7 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
                         name = serviceObj.getString("name"),
                         iconUrl = serviceObj.getString("icon"),
                         description = serviceObj.getString("description"),
-                        link = serviceObj.getString("link"),
-                        infoLink = serviceObj.getString("info_link")
+                        link = serviceObj.getString("link")
                     )
                     servicesList.add(service)
                     listItems.add(ListItem.ServiceItem(service))

@@ -9,6 +9,5 @@ data class Service(
     val name: String,
     val iconUrl: String,
     val description: String,
-    val link: String,
-    val infoLink: String
+    val link: String
 )

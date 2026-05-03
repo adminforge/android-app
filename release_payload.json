@@ -1,0 +1,8 @@
+{
+  "tag_name": "v1.2.9",
+  "target_commitish": "main",
+  "name": "v1.2.9",
+  "body": "### Added\n- Feature: Added FediSuite service to Soziales & Kommunikation.\n- Feature: Added Mini QR Code Generator service to Büro & Produktivität.\n### Changed\n- Refactor: Removed unused info_link field from all services to optimize app performance.",
+  "draft": false,
+  "prerelease": false
+}
