@@ -22,7 +22,7 @@ import com.google.gson.reflect.TypeToken
 import java.net.URL
 import kotlin.concurrent.thread
 
-class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
+class StatusActivity : BaseActivity(), StatusPoller.Listener {
     private lateinit var prefs: SharedPreferences
     private val gson = Gson()
     private var allGroups: List<Map<String, Any>> = emptyList()
@@ -84,7 +84,7 @@ class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
         runOnUiThread {
             findViewById<androidx.swiperefreshlayout.widget.SwipeRefreshLayout>(R.id.swipe_refresh).isRefreshing = false
             findViewById<ProgressBar>(R.id.progress_bar).visibility = View.GONE
-            android.widget.Toast.makeText(this@StatusActivity, "Fehler beim Laden", android.widget.Toast.LENGTH_SHORT).show()
+            android.widget.Toast.makeText(this@StatusActivity, getString(R.string.error_loading), android.widget.Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -204,14 +204,14 @@ class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
                     healthCard.setCardBackgroundColor(Color.parseColor("#262626"))
                     healthIcon.setImageResource(R.drawable.ic_warning)
                     healthIcon.setColorFilter(Color.parseColor("#f39c12")) // Orange for "Dienstausfall"
-                    healthText.text = "Teilweise eingeschränkter Dienst"
+                    healthText.text = getString(R.string.status_partial_outage)
                     healthText.setTextColor(Color.WHITE)
                 }
                 else -> {
                     healthCard.setCardBackgroundColor(Color.parseColor("#262626"))
                     healthIcon.setImageResource(R.drawable.ic_check_circle)
                     healthIcon.setColorFilter(Color.parseColor("#4caf50"))
-                    healthText.text = "Alle Systeme funktionsfähig"
+                    healthText.text = getString(R.string.status_all_ok)
                     healthText.setTextColor(Color.WHITE)
                 }
             }
@@ -223,7 +223,7 @@ class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
             if (incident["active"] as? Boolean == false) continue
             val view = inflater.inflate(R.layout.item_status_incident, container, false)
             val titleView = view.findViewById<TextView>(R.id.incident_title)
-            titleView.text = incident["title"] as? String ?: "Störung"
+            titleView.text = incident["title"] as? String ?: getString(R.string.status_incident)
             view.findViewById<TextView>(R.id.incident_content).text = incident["content"] as? String ?: ""
             when ((incident["style"] as? String ?: "info").lowercase()) {
                 "warning", "warnung" -> { view.setBackgroundResource(R.drawable.bg_incident_warning); titleView.setTextColor(Color.parseColor("#FBC02D")) }
@@ -279,7 +279,7 @@ class StatusActivity : AppCompatActivity(), StatusPoller.Listener {
             }
         }
         if (count == 0 && filteredIncidents.isEmpty()) {
-            val tv = TextView(this); tv.text = "Keine Dienste gefunden"; tv.setPadding(32,32,32,32); tv.gravity = Gravity.CENTER; tv.setTextColor(Color.WHITE)
+            val tv = TextView(this); tv.text = getString(R.string.no_services_found); tv.setPadding(32,32,32,32); tv.gravity = Gravity.CENTER; tv.setTextColor(Color.WHITE)
             container.addView(tv)
         }
 

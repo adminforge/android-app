@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_open_browser"
         android:icon="@drawable/ic_open_browser"
-        android:title="Im Browser öffnen"
+        android:title="@string/menu_open_browser"
         android:visible="false"
         app:showAsAction="always" />
 
@@ -16,22 +16,22 @@
         <menu>
             <item
                 android:id="@+id/action_settings_page"
-                android:title="Einstellungen" />
+                android:title="@string/title_settings" />
             <item
                 android:id="@+id/action_website"
-                android:title="Webseite besuchen" />
+                android:title="@string/menu_website" />
             <item
                 android:id="@+id/action_forum"
-                android:title="Forum" />
+                android:title="@string/menu_forum" />
             <item
                 android:id="@+id/action_contact"
-                android:title="Kontakt" />
+                android:title="@string/menu_contact" />
             <item
                 android:id="@+id/action_git"
-                android:title="Quellcode (Git)" />
+                android:title="@string/menu_git" />
             <item
                 android:id="@+id/action_update"
-                android:title="Auf Updates prüfen" />
+                android:title="@string/menu_update_check" />
             <item
                 android:id="@+id/action_version"
                 android:title="v1.0.134"

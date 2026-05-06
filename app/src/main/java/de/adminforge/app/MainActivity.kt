@@ -24,7 +24,7 @@ import android.app.NotificationManager
 import java.net.URL
 import kotlin.concurrent.thread
 
-class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Listener {
+class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
 
     private lateinit var prefs: SharedPreferences
 
@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
             }
 
             if (pinnedServices.isNotEmpty()) {
-                finalItems.add(ListItem.CategoryItem(Category("Deine Favoriten", pinnedServices)))
+                finalItems.add(ListItem.CategoryItem(Category(getString(R.string.category_favorites), pinnedServices)))
                 pinnedServices.forEach { finalItems.add(ListItem.ServiceItem(it)) }
             }
 

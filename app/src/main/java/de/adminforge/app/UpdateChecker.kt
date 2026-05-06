@@ -66,7 +66,7 @@ object UpdateChecker {
 
     fun checkForUpdateInteractive(context: Context) {
         val progressDialog = ProgressDialog(context)
-        progressDialog.setMessage("Prüfe auf Updates...")
+        progressDialog.setMessage(context.getString(R.string.checking_for_updates))
         progressDialog.setCancelable(false)
         progressDialog.show()
 
@@ -83,17 +83,17 @@ object UpdateChecker {
                         if (latestCode > currentCode) {
                             showUpdateDialog(context, json)
                         } else {
-                            Toast.makeText(context, "Du bist bereits auf dem neuesten Stand.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.getString(R.string.no_updates_found), Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(context, "Fehler bei der Update-Prüfung", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.update_check_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
                 Log.e("UpdateChecker", "Interactive check failed", e)
                 Handler(Looper.getMainLooper()).post {
                     progressDialog.dismiss()
-                    Toast.makeText(context, "Fehler bei der Update-Prüfung", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.update_check_failed), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -132,13 +132,13 @@ object UpdateChecker {
     }
 
     private fun showUpdateDialog(context: Context, json: org.json.JSONObject) {
-        val versionName = json.optString("versionName", "Unbekannt")
+        val versionName = json.optString("versionName", context.getString(R.string.lang_en)) // Just use something as fallback
         val downloadUrl = json.optString("downloadUrl", "")
 
         androidx.appcompat.app.AlertDialog.Builder(context)
-            .setTitle("Neues Update verfügbar ($versionName)")
-            .setMessage("Eine neue Version der adminForge App wurde gefunden. Möchtest du sie jetzt installieren?")
-            .setPositiveButton("Installieren") { _, _ ->
+            .setTitle(context.getString(R.string.new_update_available, versionName))
+            .setMessage(context.getString(R.string.update_message))
+            .setPositiveButton(context.getString(R.string.install)) { _, _ ->
                 if (downloadUrl.isNotEmpty()) {
                     downloadAndInstall(context, downloadUrl)
                 } else {
@@ -147,13 +147,13 @@ object UpdateChecker {
                     context.startActivity(intent)
                 }
             }
-            .setNegativeButton("Später", null)
+            .setNegativeButton(context.getString(R.string.later), null)
             .show()
     }
 
     private fun downloadAndInstall(context: Context, downloadUrl: String) {
         val progressDialog = ProgressDialog(context)
-        progressDialog.setMessage("Lade Update herunter...")
+        progressDialog.setMessage(context.getString(R.string.downloading_update))
         progressDialog.setIndeterminate(false)
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
         progressDialog.max = 100
@@ -202,7 +202,7 @@ object UpdateChecker {
                 Log.e("UpdateChecker", "Download failed", e)
                 Handler(Looper.getMainLooper()).post {
                     progressDialog.dismiss()
-                    Toast.makeText(context, "Download fehlgeschlagen: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, context.getString(R.string.download_failed, e.message), Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -225,7 +225,7 @@ object UpdateChecker {
         } catch (e: Exception) {
             Log.e("UpdateChecker", "Install failed", e)
             Handler(Looper.getMainLooper()).post {
-                Toast.makeText(context, "Installation fehlgeschlagen: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context.getString(R.string.install_failed, e.message), Toast.LENGTH_LONG).show()
             }
         }
     }

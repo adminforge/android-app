@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Startseite"
+            android:text="@string/nav_home"
             android:textSize="11sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -72,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="News"
+            android:text="@string/nav_news"
             android:textSize="11sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -116,7 +116,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@string/nav_status"
             android:textSize="11sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -144,7 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Spenden"
+            android:text="@string/nav_donate"
             android:textSize="11sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>

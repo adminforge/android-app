@@ -15,7 +15,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.app.NotificationManager
 
-class WebActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Listener {
+class WebActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
 
     private lateinit var prefs: SharedPreferences
 

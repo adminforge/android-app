@@ -94,7 +94,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Unterstütze adminForge"
+                            android:text="@string/donate_title"
                             android:textSize="24sp"
                             android:textStyle="bold"
                             android:gravity="center"
@@ -104,7 +104,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Wir verzichten bewusst auf Werbung und Tracking. Um unsere Unabhängigkeit zu bewahren, sind wir auf deine Hilfe angewiesen."
+                            android:text="@string/donate_desc"
                             android:textSize="14sp"
                             android:gravity="center"
                             android:textColor="?android:attr/textColorSecondary"
@@ -260,7 +260,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <TextView android:text="Überweisung" android:textSize="18sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:textColor="@android:color/white"/>
+                        <TextView android:text="@string/bank_transfer" android:textSize="18sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:textColor="@android:color/white"/>
                         
                         <!-- Inhaber -->
                         <LinearLayout
@@ -278,7 +278,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
-                                <TextView android:text="Inhaber" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                                <TextView android:text="@string/bank_holder" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                                 <TextView android:id="@+id/text_holder" android:text="Stefan Giebel" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/white"/>
                             </LinearLayout>
                             <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_copy" android:tint="?android:attr/textColorSecondary" />
@@ -300,7 +300,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
-                                <TextView android:text="IBAN" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                                <TextView android:text="@string/bank_iban" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                                 <TextView android:id="@+id/text_iban" android:text="DE17 3705 0299 1311 0361 99" android:textSize="16sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/white"/>
                             </LinearLayout>
                             <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_copy" android:tint="?android:attr/textColorSecondary" />
@@ -322,7 +322,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
-                                <TextView android:text="BIC" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                                <TextView android:text="@string/bank_bic" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                                 <TextView android:id="@+id/text_bic" android:text="COKSDE33XXX" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/white"/>
                             </LinearLayout>
                             <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_copy" android:tint="?android:attr/textColorSecondary" />
@@ -344,7 +344,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
-                                <TextView android:text="Bank" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                                <TextView android:text="@string/bank_name" android:textSize="12sp" android:textColor="?android:attr/textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                                 <TextView android:id="@+id/text_bank" android:text="Kreissparkasse Köln" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/white"/>
                             </LinearLayout>
                             <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_copy" android:tint="?android:attr/textColorSecondary" />

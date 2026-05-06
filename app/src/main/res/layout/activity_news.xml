@@ -79,7 +79,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Neuigkeiten"
+                            android:text="@string/title_news"
                             android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="?android:attr/textColorPrimary" />
@@ -94,7 +94,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_search_bar"
-                            android:text="0 ungelesene Artikel"
+                            android:text="0"
                             android:textColor="?android:attr/textColorSecondary"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="8dp"

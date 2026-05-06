@@ -20,7 +20,7 @@ import androidx.core.text.HtmlCompat
 import org.jsoup.Jsoup
 import kotlin.concurrent.thread
 
-class DonateActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Listener {
+class DonateActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
     private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -152,17 +152,17 @@ class DonateActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Li
         findViewById<View>(R.id.card_patreon).setOnClickListener { openUrlExternal("https://patreon.com/user?u=112395184") }
 
         // Bank info copy listeners
-        findViewById<View>(R.id.row_holder).setOnClickListener { copyToClipboard("Inhaber", "Stefan Giebel") }
-        findViewById<View>(R.id.row_iban).setOnClickListener { copyToClipboard("IBAN", "DE17370502991311036199") }
-        findViewById<View>(R.id.row_bic).setOnClickListener { copyToClipboard("BIC", "COKSDE33XXX") }
-        findViewById<View>(R.id.row_bank).setOnClickListener { copyToClipboard("Bank", "Kreissparkasse Köln") }
+        findViewById<View>(R.id.row_holder).setOnClickListener { copyToClipboard(getString(R.string.bank_holder), "Stefan Giebel") }
+        findViewById<View>(R.id.row_iban).setOnClickListener { copyToClipboard(getString(R.string.bank_iban), "DE17370502991311036199") }
+        findViewById<View>(R.id.row_bic).setOnClickListener { copyToClipboard(getString(R.string.bank_bic), "COKSDE33XXX") }
+        findViewById<View>(R.id.row_bank).setOnClickListener { copyToClipboard(getString(R.string.bank_name), "Kreissparkasse Köln") }
     }
 
     private fun copyToClipboard(label: String, text: String) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
         val clip = android.content.ClipData.newPlainText(label, text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(this, "$label kopiert", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.copy_toast), Toast.LENGTH_SHORT).show()
     }
 
     private fun openUrlExternal(url: String) {

@@ -31,7 +31,7 @@ data class NewsItem(
     val link: String
 )
 
-class NewsActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.Listener {
+class NewsActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
     private lateinit var prefs: SharedPreferences
     private val gson = Gson()
 
@@ -113,7 +113,7 @@ class NewsActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
         val unreadCount = prefs.getInt("unread_news_count", 0)
         if (unreadCount > 0) {
             clearBtn.visibility = View.VISIBLE
-            clearBtn.text = if (unreadCount == 1) "1 neuer Artikel" else "$unreadCount neue Artikel"
+            clearBtn.text = if (unreadCount == 1) getString(R.string.news_unread_one) else getString(R.string.news_unread_plural, unreadCount)
         } else {
             clearBtn.visibility = View.GONE
         }
@@ -151,7 +151,7 @@ class NewsActivity : AppCompatActivity(), StatusPoller.Listener, NewsPoller.List
         runOnUiThread {
             findViewById<androidx.swiperefreshlayout.widget.SwipeRefreshLayout>(R.id.swipe_refresh).isRefreshing = false
             findViewById<ProgressBar>(R.id.progress_bar).visibility = View.GONE
-            android.widget.Toast.makeText(this@NewsActivity, "Fehler beim Laden", android.widget.Toast.LENGTH_SHORT).show()
+            android.widget.Toast.makeText(this@NewsActivity, getString(R.string.error_loading), android.widget.Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Einstellungen"
+                android:text="@string/title_settings"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Benachrichtigungen"
+                android:text="@string/section_notifications"
                 android:textColor="@color/primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -85,13 +85,13 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Einschalten"
+                                android:text="@string/enable_notifications"
                                 android:textColor="@android:color/white"
                                 android:textSize="16sp" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Erhalte News &amp; Status Updates"
+                                android:text="@string/notifications_summary"
                                 android:textColor="?android:attr/textColorSecondary"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -106,7 +106,7 @@
                         android:id="@+id/btn_test_notification"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Test-Benachrichtigung senden"
+                        android:text="@string/btn_test_notification"
                         android:layout_marginTop="16dp"
                         android:backgroundTint="#40FFFFFF"
                         android:textColor="@android:color/white"
@@ -119,7 +119,7 @@
                 android:id="@+id/label_unified_push"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UnifiedPush (Echtzeit)"
+                android:text="@string/section_unified_push"
                 android:textColor="@color/primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -144,7 +144,7 @@
                         android:id="@+id/text_distributor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Distributor: Nicht gewählt"
+                        android:text="@string/distributor_none"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -152,7 +152,7 @@
                         android:id="@+id/btn_pick_distributor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Distributor wählen"
+                        android:text="@string/btn_pick_distributor"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/primary"
                         android:textColor="@android:color/black" />
@@ -163,7 +163,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hintergrund-Zuverlässigkeit"
+                android:text="@string/section_battery"
                 android:textColor="@color/primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -187,7 +187,7 @@
                         android:id="@+id/text_battery_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Akku-Optimierung: Aktiv"
+                        android:text="@string/battery_status_active"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -195,7 +195,7 @@
                         android:id="@+id/btn_request_battery_exemption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Für Hintergrund zulassen"
+                        android:text="@string/btn_allow_background"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="#40FFFFFF"
                         android:textColor="@android:color/white" />
@@ -203,7 +203,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dies verhindert, dass Android die App im Hintergrund beendet."
+                        android:text="@string/battery_summary"
                         android:textColor="?android:attr/textColorSecondary"
                         android:textSize="12sp"
                         android:layout_marginTop="4dp" />
@@ -212,9 +212,55 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/section_language"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hinweis: Wenn UnifiedPush nicht verfügbar ist, prüft die App alle 10-15 Min. im Hintergrund nach Updates."
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#262626"
+                android:layout_marginBottom="24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current_language"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/text_current_language"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lang_system"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/background_notice"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp"
                 android:gravity="center"

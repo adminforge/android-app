@@ -16,7 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import org.unifiedpush.android.connector.UnifiedPush
 
-class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsActivity : BaseActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var prefs: SharedPreferences
     private lateinit var switchNotifications: SwitchCompat
@@ -39,7 +39,7 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
             switchNotifications.isChecked = false
             prefs.edit().putBoolean("notifications_enabled", false).apply()
             updateVisibility(false)
-            Toast.makeText(this, "Berechtigung für Benachrichtigungen erforderlich", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.permission_required), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -88,18 +88,53 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
         btnTestNotification.setOnClickListener {
             NotificationHelper.showNotification(
                 this, 
-                "Test Benachrichtigung", 
-                "Dies ist ein Test von adminForge. Wenn du das siehst, funktionieren Benachrichtigungen!"
+                getString(R.string.test_notification_title), 
+                getString(R.string.test_notification_body)
             )
-            Toast.makeText(this, "Test gesendet", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.test_sent), Toast.LENGTH_SHORT).show()
         }
 
         btnRequestBatteryExemption.setOnClickListener {
             requestBatteryExemption()
         }
 
+        findViewById<View>(R.id.card_language).setOnClickListener {
+            showLanguagePicker()
+        }
+
         updateStatus()
         updateBatteryStatus()
+        updateLanguageLabel()
+    }
+
+    private fun updateLanguageLabel() {
+        val lang = LocaleHelper.getLanguage(this)
+        val label = when (lang) {
+            "de" -> getString(R.string.lang_de)
+            "en" -> getString(R.string.lang_en)
+            else -> getString(R.string.lang_system)
+        }
+        findViewById<TextView>(R.id.text_current_language).text = label
+    }
+
+    private fun showLanguagePicker() {
+        val languages = arrayOf(getString(R.string.lang_de), getString(R.string.lang_en))
+        val codes = arrayOf("de", "en")
+        
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.section_language))
+            .setItems(languages) { _, which ->
+                val selected = codes[which]
+                LocaleHelper.setLocale(this, selected)
+                
+                // Restart to apply
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
     }
 
     private fun updateBatteryStatus() {
@@ -111,11 +146,11 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
         }
 
         if (isIgnoring) {
-            textBatteryStatus.text = "Akku-Optimierung: Ausgenommen"
+            textBatteryStatus.text = getString(R.string.battery_status_exempt)
             textBatteryStatus.setTextColor(android.graphics.Color.GREEN)
             btnRequestBatteryExemption.visibility = View.GONE
         } else {
-            textBatteryStatus.text = "Akku-Optimierung: Aktiv (Eingeschränkt)"
+            textBatteryStatus.text = getString(R.string.battery_status_active)
             textBatteryStatus.setTextColor(android.graphics.Color.YELLOW)
             btnRequestBatteryExemption.visibility = View.VISIBLE
         }
@@ -179,7 +214,7 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
             }.toTypedArray()
 
             androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Distributor wählen")
+                .setTitle(getString(R.string.title_distributor_picker))
                 .setItems(names) { _, which ->
                     val selected = distributors[which]
                     
@@ -194,10 +229,10 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
                         updateStatus()
                     }, 200)
                     
-                    Toast.makeText(this, "Ausgewählt: ${names[which]}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.selected_format, names[which]), Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Abbrechen", null)
-                .setNeutralButton("Mehr Infos") { _, _ ->
+                .setNegativeButton(getString(R.string.cancel), null)
+                .setNeutralButton(getString(R.string.more_info)) { _, _ ->
                     showNoDistributorDialog()
                 }
                 .show()
@@ -242,9 +277,9 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
             } catch (e: Exception) {
                 distributor
             }
-            textDistributor.text = "Distributor: $name"
+            textDistributor.text = getString(R.string.distributor_format, name)
         } else {
-            textDistributor.text = "Distributor: Nicht gewählt"
+            textDistributor.text = getString(R.string.distributor_none)
         }
     }
 

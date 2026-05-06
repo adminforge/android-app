@@ -1,29 +1,29 @@
 [
   {
-    "name": "📶 Network & Management",
+    "name": "📶 Netzwerk & Verwaltung",
     "services": [
       {
         "name": "DNS Resolver",
         "icon": "https://adminforge.de/wp-content/uploads/2021/07/dnsforge.png",
-        "description": "Censorship-free DNS resolver without logging, featuring an ad blocker.",
+        "description": "Zensurfreier DNS Resolver ohne Logging, dafür mit Werbeblocker.",
         "link": "https://dnsforge.de"
       },
       {
         "name": "DynDNS",
         "icon": "https://adminforge.de/wp-content/uploads/2021/07/ddns.png",
-        "description": "Assign a fixed domain name to your dynamic IP address.",
+        "description": "Einen festen Domainnamen deiner dynamischen IP zuweisen.",
         "link": "https://noip.at"
       },
       {
         "name": "Speedtest",
         "icon": "https://adminforge.de/wp-content/uploads/2021/07/librespeed.png",
-        "description": "Test your internet bandwidth directly via the browser.",
+        "description": "Teste deine Internet Bandbreite über den Browser.",
         "link": "https://bandspeed.de"
       },
       {
         "name": "IP Info",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/ipinfo.png",
-        "description": "Shows your IP address, country, AS number, and user agent.",
+        "description": "Zeigt dir deine IP-Adresse, Land, AS-Nummer und deinen User-Agent an.",
         "link": "https://ipwho.de"
       },
       {
@@ -35,466 +35,466 @@
       {
         "name": "ActivityPub Relay",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/fediverse-1.png",
-        "description": "An ActivityPub relay for the German-speaking Fediverse.",
+        "description": "Ein ActivityPub Relais für das deutschsprachige Fediverse.",
         "link": "https://relay.kanoa.de"
       },
       {
         "name": "NTP Server",
         "icon": "https://adminforge.de/wp-content/uploads/2024/10/chrony.jpg",
-        "description": "Free time servers for highly accurate time synchronization.",
+        "description": "Freie Zeitserver für eine höchstmögliche genaue Zeitsynchronisation.",
         "link": "https://adminforge.de/services/ntp/"
       },
       {
         "name": "FOSS Public Alert Server",
         "icon": "https://adminforge.de/wp-content/uploads/2025/12/foss_warn.png",
-        "description": "Receive worldwide disaster warnings.",
+        "description": "Erhalte weltweit Katastrophenwarnungen.",
         "link": "https://alerts.adminforge.de"
       }
     ]
   },
   {
-    "name": "☁️ Online Services",
+    "name": "☁️ Online-Dienste",
     "services": [
       {
-        "name": "Gruble Search",
+        "name": "Gruble Suche",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/favicon.png",
-        "description": "A privacy-respecting meta search engine.",
+        "description": "Eine privatsphären-respektierende Metasuchmaschine.",
         "link": "https://www.gruble.de"
       },
       {
         "name": "Nextcloud",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/nextcloud.png",
-        "description": "Your cloud storage, messenger, contacts, calendar, and more.",
+        "description": "Dein Cloud-Speicher, Messenger, Adressbuch, Kalender, Notizblock u.v.m.",
         "link": "https://my.adminforge.de"
       },
       {
         "name": "Events",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/mobilize.png",
-        "description": "Find, plan, and organize local events.",
+        "description": "Veranstaltungen finden, planen und organisieren.",
         "link": "https://mobilize.adminforge.de"
       },
       {
         "name": "URL shortener",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/lstu.png",
-        "description": "Short URL service: turn long internet addresses into short ones.",
+        "description": "Kurz-URL-Dienst, aus langen Internetadressen werden kurze.",
         "link": "https://tny.lv"
       },
       {
         "name": "PDF Tools",
         "icon": "https://adminforge.de/wp-content/uploads/2026/02/bentopdf-150x150.png",
-        "description": "Merge PDF documents, extract pages, and more.",
+        "description": "PDF Dokumente zusammenführen, Seiten extrahieren u.v.m.",
         "link": "https://pdf.adminforge.de"
       },
       {
-        "name": "Recipes",
+        "name": "Rezepte",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/tandoor.png",
-        "description": "Collect and share recipes quickly, easily, and structurally.",
+        "description": "Rezepte schnell, einfach und strukturiert sammeln und teilen.",
         "link": "https://rezepte.adminforge.de"
       },
       {
-        "name": "Wishlist",
+        "name": "Wunschliste",
         "icon": "https://adminforge.de/wp-content/uploads/2024/09/wishthis.png",
-        "description": "Create, manage, and view your wishes for any kind of occasion.",
+        "description": "Erstellen, verwalten und anzeigen Deiner Wünsche für jede Art von Anlass.",
         "link": "https://wunschliste.adminforge.de"
       },
       {
         "name": "Ente",
         "icon": "https://adminforge.de/wp-content/uploads/2025/01/ente.png",
-        "description": "Securely encrypt your photos and videos and sync 2FA codes.",
+        "description": "Sichere verschlüsselt deine Fotos, Videos und synchronisiere deine 2FA Codes.",
         "link": "https://erpel.cloud"
       },
       {
-        "name": "Flea Market",
+        "name": "Flohmarkt",
         "icon": "https://adminforge.de/wp-content/uploads/2025/04/flohmarkt.png",
-        "description": "An open-source alternative to eBay for local classifieds.",
+        "description": "Mit Flohmarkt habt ihr eine quelloffene Alternative zu eBay.",
         "link": "https://flohmarkt.adminforge.de"
       },
       {
         "name": "Wanderer",
         "icon": "https://adminforge.de/wp-content/uploads/2026/01/wanderer.png",
-        "description": "Plan your hiking trails and tours, upload your recorded GPS tracks.",
+        "description": "Plane deine Wanderwege und Touren, lade deine aufgezeichnete GPS-Tracks hoch.",
         "link": "https://wanderer.adminforge.de/"
       },
       {
         "name": "AdventureLog",
         "icon": "https://adminforge.de/wp-content/uploads/2026/01/adventurelog.png",
-        "description": "Capture your adventures as personal, GPS-enriched trip logs.",
+        "description": "Halte deine Abenteuer als persönliche, mit GPS-Daten angereicherte Tour- und Reiselogbücher fest.",
         "link": "https://adventure.adminforge.de"
       },
       {
         "name": "KitchenOwl",
         "icon": "https://adminforge.de/wp-content/uploads/2026/01/logo.png",
-        "description": "Create, save, and share your own recipes and manage your finances.",
+        "description": "Erstelle, speichere und teile deine eigenen Rezepte. Mache eine Einkaufsliste und halte deine Finanzen im Blick.",
         "link": "https://kitchen.adminforge.de"
       },
       {
         "name": "FitTrackee",
         "icon": "https://adminforge.de/wp-content/uploads/2026/05/fittrackee.png",
-        "description": "Upload outdoor tracks, analyze stats, and view filtered workouts on maps.",
+        "description": "Outdoor-Tracks hochladen, Statistiken analysieren und Workouts gefiltert auf Karten anzeigen.",
         "link": "https://fit.adminforge.de"
       }
     ]
   },
   {
-    "name": "#️⃣ Social & Communication",
+    "name": "#️⃣ Soziales & Kommunikation",
     "services": [
       {
         "name": "Mastodon",
         "icon": "https://adminforge.de/wp-content/uploads/2022/11/mastodon.png",
-        "description": "Mastodon is a decentralized alternative to Twitter.",
+        "description": "Mastodon ist eine dezentrale Alternative zu Twitter.",
         "link": "https://kanoa.de"
       },
       {
         "name": "Matrix",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/matrix-1.png",
-        "description": "Decentralized messenger for end-to-end encrypted messaging.",
+        "description": "Dezentraler Messenger für Ende-zu-Ende verschlüsselte Nachrichten.",
         "link": "https://nope.chat"
       },
       {
         "name": "SimpleX Chat",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/simplex.png",
-        "description": "Privacy redefined: The first messenger without user IDs!",
+        "description": "Privatsphäre neu definiert: Der erste Messenger ohne Nutzerkennungen!",
         "link": "https://simplex.adminforge.de"
       },
       {
         "name": "OpenTalk",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/opentalk.png",
-        "description": "Video conferencing with screen sharing and whiteboards.",
+        "description": "Videokonferenzen abhalten mit Bildschirmfreigabe und Whiteboard.",
         "link": "https://teamjoin.de"
       },
       {
         "name": "Anonym Mail",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/unbox_icon_logo.png",
-        "description": "Protect your inbox with unbox.at email aliases.",
+        "description": "Schütze deinen Posteingang mit unbox.at E-Mail-Aliasnamen.",
         "link": "https://unbox.at"
       },
       {
         "name": "MollySocket (Signal)",
         "icon": "https://adminforge.de/wp-content/uploads/2024/03/mollysocket.png",
-        "description": "Enables Signal notifications via UnifiedPush.",
+        "description": "MollySocket ermöglicht es, Signal-Benachrichtigungen über UnifiedPush zu erhalten.",
         "link": "https://adminforge.de/services/mollysocket/"
       },
       {
         "name": "Pixelfed",
         "icon": "https://adminforge.de/wp-content/uploads/2025/01/pixelfed-icon-1.png",
-        "description": "Pixelfed is a decentralized alternative to Instagram.",
+        "description": "Pixelfed ist eine dezentrale Alternative zu Instagram.",
         "link": "https://pixelshot.it"
       },
       {
         "name": "LinkStack",
         "icon": "https://adminforge.de/wp-content/uploads/2025/01/linklist.png",
-        "description": "Manage all your important links in one place.",
+        "description": "Alle deine wichtigen Links an einem Ort verwalten.",
         "link": "https://linklist.me"
       },
       {
         "name": "PeerTube",
         "icon": "https://adminforge.de/wp-content/uploads/2025/02/peertube.png",
-        "description": "PeerTube is a decentralized alternative to YouTube.",
+        "description": "PeerTube ist eine dezentrale Alternative zu YouTube.",
         "link": "https://clip.place"
       },
       {
         "name": "DeltaChat (Relay)",
         "icon": "https://adminforge.de/wp-content/uploads/2026/03/delta_chat.png",
-        "description": "Decentralized messenger for end-to-end encrypted messaging.",
+        "description": "Dezentraler Messenger für Ende-zu-Ende verschlüsselte Nachrichten.",
         "link": "https://chat.adminforge.de/"
       },
       {
         "name": "adminForge Mail",
         "icon": "https://adminforge.de/wp-content/uploads/2026/04/mail-logo.png",
-        "description": "Secure email hosting for privacy enthusiasts.",
+        "description": "Sicheres E-Mail Hosting für Privatsphäre-Enthusiasten.",
         "link": "https://mail.adminforge.de/"
       },
       {
         "name": "FediSuite",
         "icon": "https://adminforge.de/wp-content/uploads/2026/04/fedisuite.png",
-        "description": "Manage all your Fediverse accounts in one place.",
+        "description": "Alle deine Fediverse-Accounts an einem Ort verwalten.",
         "link": "https://fedi.adminforge.de/"
       }
     ]
   },
   {
-    "name": "🏭 Office & Productivity",
+    "name": "🏭 Büro & Produktivität",
     "services": [
       {
         "name": "Pastebin",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/pastebin.png",
-        "description": "Share text, passwords, or code snippets securely.",
+        "description": "Texte, Passwörter oder Code Schnipsel verschlüsselt teilen.",
         "link": "https://notebin.de"
       },
       {
-        "name": "Notes",
+        "name": "Notizen",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/hedgedoc.png",
-        "description": "Collaborate on notes in real-time.",
+        "description": "Gemeinsam in Echtzeit an Notizen arbeiten.",
         "link": "https://doc.adminforge.de"
       },
       {
         "name": "CryptPad",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/cryptpad.png",
-        "description": "Office suite for end-to-end encrypted collaboration.",
+        "description": "Office Suite für ein Ende-zu-Ende-verschlüsseltes Zusammenarbeit.",
         "link": "https://cryptpad.adminforge.de"
       },
       {
         "name": "Calc",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/ethercalc.png",
-        "description": "Collaborate on spreadsheets in real-time in the browser.",
+        "description": "Gemeinschaftlich in Echtzeit im Webrowser an Tabellen arbeiten.",
         "link": "https://calc.adminforge.de"
       },
       {
         "name": "Pad",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/etherpad.png",
-        "description": "Collaborate on documents in real-time in the browser.",
+        "description": "Gemeinschaftlich in Echtzeit im Webrowser an Doc’s arbeiten.",
         "link": "https://pad.adminforge.de"
       },
       {
-        "name": "Project Board",
+        "name": "Projekt Board",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/wekan.png",
-        "description": "Kanban-style project management.",
+        "description": "Projektmanagement im Kanban-Stil.",
         "link": "https://kanban.adminforge.de"
       },
       {
         "name": "Trash Mail",
         "icon": "https://adminforge.de/wp-content/uploads/2025/07/trashmail.png",
-        "description": "Temporary email addresses for forum registrations, etc.",
+        "description": "Temporäre E-Mail-Adressen für bspw. Anmeldungen in Foren.",
         "link": "https://mailhole.de"
       },
       {
         "name": "Whiteboard",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/wbo.png",
-        "description": "Collaborate on a whiteboard in real-time.",
+        "description": "Gemeinsam in Echtzeit an einem Whiteboard arbeiten.",
         "link": "https://paint.adminforge.de"
       },
       {
         "name": "ToDo App",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/vikunja.png",
-        "description": "Organize all your tasks in lists.",
+        "description": "Organisiere all deine Aufgaben in Listen.",
         "link": "https://tasks.adminforge.de"
       },
       {
-        "name": "Diagrams",
+        "name": "Diagramme",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/draw.png",
-        "description": "Whiteboarding and diagramming tool.",
+        "description": "Whiteboarding und Diagrammerstellung.",
         "link": "https://draw.adminforge.de"
       },
       {
         "name": "Git",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/gitea.png",
-        "description": "A home for your code projects.",
+        "description": "Ein Heim für deine Projekte.",
         "link": "https://git.adminforge.de"
       },
       {
         "name": "IT Tools",
         "icon": "https://adminforge.de/wp-content/uploads/2024/08/it-tools.png",
-        "description": "Collection of practical online tools.",
+        "description": "Sammlung praktischer Online-Tools.",
         "link": "https://tools.adminforge.de/"
       },
       {
         "name": "Mini QR Code Generator",
         "icon": "https://adminforge.de/wp-content/uploads/2026/04/mini-qr.png",
-        "description": "An app for creating beautiful QR codes and scanning various types.",
+        "description": "Eine App zum Erstellen schöner QR-Codes und zum Scannen verschiedener QR-Code-Typen.",
         "link": "https://qr.adminforge.de/"
       },
       {
         "name": "Documenso",
         "icon": "https://adminforge.de/wp-content/uploads/2025/04/documenso.png",
-        "description": "DocuSign alternative. Have PDF documents signed.",
+        "description": "Alternative zu DocuSign. PDF Dokumente signieren lassen.",
         "link": "https://sign.adminforge.de"
       }
     ]
   },
   {
-    "name": "📂 File Exchange",
+    "name": "📂 Datenaustausch",
     "services": [
       {
         "name": "Secure Upload",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/lufi.png",
-        "description": "Share files, text, images, and videos easily and encrypted.",
+        "description": "Dateien, Texte, Bilder, Videos einfach und verschlüsselt teilen.",
         "link": "https://upload.adminforge.de"
       },
       {
         "name": "NowTransfer Upload",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/psitransfer.png",
-        "description": "Share files, text, images, and videos quickly and easily.",
+        "description": "Dateien, Texte, Bilder, Videos einfach und schnell teilen.",
         "link": "https://nowtransfer.de"
       },
       {
         "name": "Image Upload",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/lutim.png",
-        "description": "Share images individually or in bulk securely over the internet.",
+        "description": "Bilder einzeln oder in Massen verschlüsselt über das Internet teilen.",
         "link": "https://img.adminforge.de"
       },
       {
         "name": "Airdrop",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/snapdrop.png",
-        "description": "Exchange files in your local network completely via the browser.",
+        "description": "Dateien im Heimnetzwerk vollständig über den Browser austauschen.",
         "link": "https://dropfile.at"
       },
       {
         "name": "Firefox Send",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/send.png",
-        "description": "Share files securely with end-to-end encryption.",
+        "description": "Dateien sicher End-to-End-verschlüsselt mit anderne teilen.",
         "link": "https://send.adminforge.de"
       },
       {
         "name": "Magic Wormhole",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/magic-wormhole.png",
-        "description": "Transfer items securely using a wormhole relay server between computers.",
+        "description": "Dinge sicher mit dem Wormhole Relay Server von einem Computer zum anderen übertragen.",
         "link": "https://wormhole.adminforge.de"
       },
       {
-        "name": "cURL File Upload",
+        "name": "cURL Dateiupload",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/transfer.png",
-        "description": "Simple file sharing via the command line.",
+        "description": "Einfache Freigabe von Dateien über die Befehlszeile.",
         "link": "https://transfer.adminforge.de"
       },
       {
         "name": "SkySend",
         "icon": "https://adminforge.de/wp-content/uploads/2026/05/logo-skysend.png",
-        "description": "Share files, notes, and passwords end-to-end encrypted with others.",
+        "description": "Teile Dateien, Notizen und Passwörter Ende-zu-Ende verschlüsselt mit anderen.",
         "link": "https://share.adminforge.de"
       }
     ]
   },
   {
-    "name": "🔒 Security & Privacy",
+    "name": "🔒 Sicherheit & Datenschutz",
     "services": [
       {
         "name": "Bitwarden Password Manager",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/bitwarden.png",
-        "description": "Manage encrypted passwords on all your devices.",
+        "description": "Passwörter verschlüsselt auf sämtlichen Geräten verwalten.",
         "link": "https://pwbox.de"
       },
       {
         "name": "Vaultwarden Password Manager",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/vaultwarden-1.png",
-        "description": "Enhanced encrypted password management with more features.",
+        "description": "Passwörter verschlüsselt auf sämtlichen Geräten mit mehr Features verwalten.",
         "link": "https://vault.pwbox.de"
       },
       {
         "name": "Password Exchange",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/password.png",
-        "description": "Securely exchange passwords.",
+        "description": "Sicher Passwörter austauschen.",
         "link": "https://pw.adminforge.de"
       },
       {
         "name": "Hat.sh",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/hat.sh_.png",
-        "description": "Simple, fast, secure client-side file encryption.",
+        "description": "Einfache, schnelle, sichere Client-seitige Dateiverschlüsselung.",
         "link": "https://hat.adminforge.de"
       },
       {
         "name": "Password Pusher",
         "icon": "https://adminforge.de/wp-content/uploads/2025/04/pwpush.png",
-        "description": "Push passwords, text, files, or URLs that expire and delete themselves.",
+        "description": "Push–Passwörter, Text, Dateien oder URLs, die automatisch ablaufen und sich selbst löschen.",
         "link": "https://pwpush.adminforge.de/"
       }
     ]
   },
   {
-    "name": "👨‍🏫 Education & Reference",
+    "name": "👨‍🏫 Bildung & Referenz",
     "services": [
       {
-        "name": "Translate",
+        "name": "Übersetzen",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/libretranslate-1.png",
-        "description": "Translate text up to 10,000 characters long.",
+        "description": "Bis zu 10.000 Zeichen lange Texte übersetzen.",
         "link": "https://translate.adminforge.de"
       },
       {
         "name": "Google Translate",
         "icon": "https://adminforge.de/wp-content/uploads/2024/03/lingva.png",
-        "description": "Alternative Google Translate frontend without tracking.",
+        "description": "Alternatives Google-Translate-Frontend ohne Tracking.",
         "link": "https://lingva.adminforge.de/"
       },
       {
         "name": "Multi Translate",
         "icon": "https://adminforge.de/wp-content/uploads/2024/07/mozhi.png",
-        "description": "Alternative Google/DeepL/DuckDuckGo frontend without tracking.",
+        "description": "Alternatives Google/DeepL/DuckDuckGo-Translate-Frontend ohne Tracking.",
         "link": "https://mozhi.adminforge.de/"
       },
       {
-        "name": "Surveys",
+        "name": "Umfragen",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/framadate.png",
-        "description": "Create surveys or find a common date.",
+        "description": "Umfragen erstellen oder einen gemeinsamen Termin finden.",
         "link": "https://whatapoll.de"
       },
       {
         "name": "BookStack Wiki",
         "icon": "https://adminforge.de/wp-content/uploads/2024/02/bookstack.png",
-        "description": "Organize your information in books with pages.",
+        "description": "Lege deine Informationen geordnet in Büchern mit Seiten ab.",
         "link": "https://bookstack.adminforge.de"
       },
       {
-        "name": "Spell Check",
+        "name": "Rechtschreibprüfung",
         "icon": "https://adminforge.de/wp-content/uploads/2024/03/LanguageTool_Logo.png",
-        "description": "LanguageTool is an AI-based grammar and spell checker.",
+        "description": "LanguageTool ist eine KI-basierte Komma-, Grammatik- und Rechtschreibprüfung.",
         "link": "https://adminforge.de/services/languagetool/"
       }
     ]
   },
   {
-    "name": "📰 News & Bookmarks",
+    "name": "📰 Nachrichten & Lesezeichen",
     "services": [
       {
         "name": "RSS Reader",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/freshrss.png",
-        "description": "Fresh-RSS is a wonderful web-based feed reader.",
+        "description": "Fresh-RSS ist ein wundervoller web-basierter Feed Reader.",
         "link": "https://frss.adminforge.de"
       },
       {
         "name": "Bookmark Sync",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/xbrowsersync.png",
-        "description": "Keep bookmarks encrypted and in sync across multiple devices.",
+        "description": "Lesezeichen verschlüsselt auf mehreren Geräten synchron halten.",
         "link": "https://sync.adminforge.de"
       },
       {
         "name": "Linkwarden Bookmark Manager",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/linkwarden.png",
-        "description": "Bookmark manager for collecting and organizing web pages.",
+        "description": "Lesezeichenmanager zum gemeinsamen sammeln und organisieren von Webseiten.",
         "link": "https://links.adminforge.de"
       },
       {
         "name": "Wallabag – Read them later",
         "icon": "https://adminforge.de/wp-content/uploads/2024/02/wallabag.png",
-        "description": "Save interesting articles and read them later.",
+        "description": "Mit Wallabag könnt ihr interessante Artikel ablegen und einfach später lesen.",
         "link": "https://bag.adminforge.de"
       },
       {
         "name": "linkding",
         "icon": "https://adminforge.de/wp-content/uploads/2025/04/linkding.jpg",
-        "description": "linkding is a bookmark manager with Firefox and Chrome extensions.",
+        "description": "linkding ist ein Lesezeichen–Manager mit Firefox und Chrome Erweiterung.",
         "link": "https://linkding.adminforge.de"
       }
     ]
   },
   {
-    "name": "🔔 Push Notifications",
+    "name": "🔔 Push-Benachrichtigungen",
     "services": [
       {
         "name": "Ntfy Push",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/ntfy.png",
-        "description": "UnifiedPush service, sends and receives in real-time.",
+        "description": "UnifiedPush Nachrichtendienst, sendet und empfängt in Echtzeit.",
         "link": "https://ntfy.adminforge.de"
       },
       {
         "name": "Gotify Push",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/gotify.png",
-        "description": "Service for sending and receiving notifications in real-time.",
+        "description": "Nachrichtendienst zum Senden und Empfangen in Echtzeit.",
         "link": "https://push.adminforge.de"
       }
     ]
   },
   {
-    "name": "🖥️ Remote Work",
+    "name": "🖥️ Fernarbeit",
     "services": [
       {
         "name": "RustDesk",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/rustdesk.png",
-        "description": "Remote desktop software as a true alternative to TeamViewer.",
+        "description": "Remote-Desktop-Software als echte Alternative zu TeamViewer.",
         "link": "https://deskforge.de"
       },
       {
         "name": "Remote Desktop",
         "icon": "https://adminforge.de/wp-content/uploads/2024/01/remotely.png",
-        "description": "Remote maintenance software for remote support.",
+        "description": "Fernwartungs-Software um Benutzer aus der Ferne zu helfen.",
         "link": "https://remote.adminforge.de"
       }
     ]
