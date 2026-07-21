@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.2] - 2026-07-21
+### Added
+- Feature: Added asciinema service (record, stream & share terminal sessions) to Büro & Produktivität.
+### Fixed
+- Fix: Migrated all service icon URLs to backend.adminforge.de after the wp-content move; icons were previously broken (404).
+
 ## [1.2.9] - 2026-04-29
 ### Added
 - Feature: Added FediSuite service to Soziales & Kommunikation.

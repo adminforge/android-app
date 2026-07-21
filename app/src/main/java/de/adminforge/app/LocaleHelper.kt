@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import java.util.Locale
 
 object LocaleHelper {
@@ -20,6 +22,10 @@ object LocaleHelper {
 
     fun setLocale(context: Context, language: String): Context {
         persist(context, language)
+
+        // Modern way (API 33+ and AppCompat)
+        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(language)
+        AppCompatDelegate.setApplicationLocales(appLocale)
 
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             updateResources(context, language)

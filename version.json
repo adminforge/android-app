@@ -1,6 +1,6 @@
 {
-  "versionCode": 374,
-  "versionName": "1.3.1",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.1/adminforge-v1.3.1.apk",
-  "notes": "v1.3.1 Release\n\n- Bilingual Support (DE/EN)\n- New Services: FitTrackee & SkySend"
+  "versionCode": 375,
+  "versionName": "1.3.2",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.2/adminforge-v1.3.2.apk",
+  "notes": "v1.3.2 Release\n\n- New Service: asciinema (record, stream & share terminal sessions)\n- Fixed: Migrated all service icons to backend.adminforge.de (icons were broken after the wp-content move)"
 }

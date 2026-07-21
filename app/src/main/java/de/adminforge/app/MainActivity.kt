@@ -276,6 +276,12 @@ class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener 
         // Initial state
         updateBottomNavIcons("home")
 
+        // Explicitly set navigation labels from resources to ensure localization
+        findViewById<TextView>(R.id.txt_home)?.text = getString(R.string.nav_home)
+        findViewById<TextView>(R.id.txt_news)?.text = getString(R.string.nav_news)
+        findViewById<TextView>(R.id.txt_status)?.text = getString(R.string.nav_status)
+        findViewById<TextView>(R.id.txt_donate)?.text = getString(R.string.nav_donate)
+
         if (intent.getBooleanExtra("FOCUS_SEARCH", false)) {
             searchBox.post {
                 searchBox.requestFocus()
@@ -347,6 +353,15 @@ class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener 
 
     override fun onCreateOptionsMenu(menu: android.view.Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
+        
+        // Explicitly set menu titles from resources to ensure localization
+        menu.findItem(R.id.action_open_browser)?.title = getString(R.string.menu_open_browser)
+        menu.findItem(R.id.action_settings_page)?.title = getString(R.string.title_settings)
+        menu.findItem(R.id.action_website)?.title = getString(R.string.menu_website)
+        menu.findItem(R.id.action_forum)?.title = getString(R.string.menu_forum)
+        menu.findItem(R.id.action_contact)?.title = getString(R.string.menu_contact)
+        menu.findItem(R.id.action_git)?.title = getString(R.string.menu_git)
+
         try {
             val pInfo = packageManager.getPackageInfo(packageName, 0)
             val versionItem = menu.findItem(R.id.action_version)

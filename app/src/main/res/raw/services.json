@@ -4,49 +4,49 @@
     "services": [
       {
         "name": "DNS Resolver",
-        "icon": "https://adminforge.de/wp-content/uploads/2021/07/dnsforge.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/06/dnsforge.png",
         "description": "Censorship-free DNS resolver without logging, featuring an ad blocker.",
         "link": "https://dnsforge.de"
       },
       {
         "name": "DynDNS",
-        "icon": "https://adminforge.de/wp-content/uploads/2021/07/ddns.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2021/07/ddns.png",
         "description": "Assign a fixed domain name to your dynamic IP address.",
         "link": "https://noip.at"
       },
       {
         "name": "Speedtest",
-        "icon": "https://adminforge.de/wp-content/uploads/2021/07/librespeed.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2021/07/librespeed.png",
         "description": "Test your internet bandwidth directly via the browser.",
         "link": "https://bandspeed.de"
       },
       {
         "name": "IP Info",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/ipinfo.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/ipinfo.png",
         "description": "Shows your IP address, country, AS number, and user agent.",
         "link": "https://ipwho.de"
       },
       {
         "name": "STUN Server",
-        "icon": "https://adminforge.de/wp-content/uploads/2021/07/stun.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2021/07/stun.png",
         "description": "stun:relay.adminforge.de:443 stun:relay2.adminforge.de:443",
         "link": "https://adminforge.de/services/stun-server/"
       },
       {
         "name": "ActivityPub Relay",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/fediverse-1.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/fediverse-1.png",
         "description": "An ActivityPub relay for the German-speaking Fediverse.",
         "link": "https://relay.kanoa.de"
       },
       {
         "name": "NTP Server",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/10/chrony.jpg",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/10/chrony.jpg",
         "description": "Free time servers for highly accurate time synchronization.",
         "link": "https://adminforge.de/services/ntp/"
       },
       {
         "name": "FOSS Public Alert Server",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/12/foss_warn.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/12/foss_warn.png",
         "description": "Receive worldwide disaster warnings.",
         "link": "https://alerts.adminforge.de"
       }
@@ -57,79 +57,79 @@
     "services": [
       {
         "name": "Gruble Search",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/favicon.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/favicon.png",
         "description": "A privacy-respecting meta search engine.",
         "link": "https://www.gruble.de"
       },
       {
         "name": "Nextcloud",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/nextcloud.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/nextcloud.png",
         "description": "Your cloud storage, messenger, contacts, calendar, and more.",
         "link": "https://my.adminforge.de"
       },
       {
         "name": "Events",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/mobilize.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/mobilize.png",
         "description": "Find, plan, and organize local events.",
         "link": "https://mobilize.adminforge.de"
       },
       {
         "name": "URL shortener",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/lstu.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/lstu.png",
         "description": "Short URL service: turn long internet addresses into short ones.",
         "link": "https://tny.lv"
       },
       {
         "name": "PDF Tools",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/02/bentopdf-150x150.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/02/bentopdf-150x150.png",
         "description": "Merge PDF documents, extract pages, and more.",
         "link": "https://pdf.adminforge.de"
       },
       {
         "name": "Recipes",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/tandoor.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/tandoor.png",
         "description": "Collect and share recipes quickly, easily, and structurally.",
         "link": "https://rezepte.adminforge.de"
       },
       {
         "name": "Wishlist",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/09/wishthis.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/09/wishthis.png",
         "description": "Create, manage, and view your wishes for any kind of occasion.",
         "link": "https://wunschliste.adminforge.de"
       },
       {
         "name": "Ente",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/01/ente.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/01/ente.png",
         "description": "Securely encrypt your photos and videos and sync 2FA codes.",
         "link": "https://erpel.cloud"
       },
       {
         "name": "Flea Market",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/04/flohmarkt.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/04/flohmarkt.png",
         "description": "An open-source alternative to eBay for local classifieds.",
         "link": "https://flohmarkt.adminforge.de"
       },
       {
         "name": "Wanderer",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/01/wanderer.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/01/wanderer.png",
         "description": "Plan your hiking trails and tours, upload your recorded GPS tracks.",
         "link": "https://wanderer.adminforge.de/"
       },
       {
         "name": "AdventureLog",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/01/adventurelog.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/01/adventurelog.png",
         "description": "Capture your adventures as personal, GPS-enriched trip logs.",
         "link": "https://adventure.adminforge.de"
       },
       {
         "name": "KitchenOwl",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/01/logo.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/01/logo.png",
         "description": "Create, save, and share your own recipes and manage your finances.",
         "link": "https://kitchen.adminforge.de"
       },
       {
         "name": "FitTrackee",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/05/fittrackee.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/05/fittrackee.png",
         "description": "Upload outdoor tracks, analyze stats, and view filtered workouts on maps.",
         "link": "https://fit.adminforge.de"
       }
@@ -140,73 +140,73 @@
     "services": [
       {
         "name": "Mastodon",
-        "icon": "https://adminforge.de/wp-content/uploads/2022/11/mastodon.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2022/11/mastodon.png",
         "description": "Mastodon is a decentralized alternative to Twitter.",
         "link": "https://kanoa.de"
       },
       {
         "name": "Matrix",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/matrix-1.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/matrix-1.png",
         "description": "Decentralized messenger for end-to-end encrypted messaging.",
         "link": "https://nope.chat"
       },
       {
         "name": "SimpleX Chat",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/simplex.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/simplex.png",
         "description": "Privacy redefined: The first messenger without user IDs!",
         "link": "https://simplex.adminforge.de"
       },
       {
         "name": "OpenTalk",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/opentalk.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/opentalk.png",
         "description": "Video conferencing with screen sharing and whiteboards.",
         "link": "https://teamjoin.de"
       },
       {
         "name": "Anonym Mail",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/unbox_icon_logo.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/unbox_icon_logo.png",
         "description": "Protect your inbox with unbox.at email aliases.",
         "link": "https://unbox.at"
       },
       {
         "name": "MollySocket (Signal)",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/03/mollysocket.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/03/mollysocket.png",
         "description": "Enables Signal notifications via UnifiedPush.",
         "link": "https://adminforge.de/services/mollysocket/"
       },
       {
         "name": "Pixelfed",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/01/pixelfed-icon-1.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/01/pixelfed-icon-1.png",
         "description": "Pixelfed is a decentralized alternative to Instagram.",
         "link": "https://pixelshot.it"
       },
       {
         "name": "LinkStack",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/01/linklist.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/01/linklist.png",
         "description": "Manage all your important links in one place.",
         "link": "https://linklist.me"
       },
       {
         "name": "PeerTube",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/02/peertube.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/02/peertube.png",
         "description": "PeerTube is a decentralized alternative to YouTube.",
         "link": "https://clip.place"
       },
       {
         "name": "DeltaChat (Relay)",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/03/delta_chat.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/04/deltachat-logo.png",
         "description": "Decentralized messenger for end-to-end encrypted messaging.",
         "link": "https://chat.adminforge.de/"
       },
       {
         "name": "adminForge Mail",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/04/mail-logo.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/04/mail-logo.png",
         "description": "Secure email hosting for privacy enthusiasts.",
         "link": "https://mail.adminforge.de/"
       },
       {
         "name": "FediSuite",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/04/fedisuite.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/04/fedisuite.png",
         "description": "Manage all your Fediverse accounts in one place.",
         "link": "https://fedi.adminforge.de/"
       }
@@ -217,87 +217,93 @@
     "services": [
       {
         "name": "Pastebin",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/pastebin.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/pastebin.png",
         "description": "Share text, passwords, or code snippets securely.",
         "link": "https://notebin.de"
       },
       {
         "name": "Notes",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/hedgedoc.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/hedgedoc.png",
         "description": "Collaborate on notes in real-time.",
         "link": "https://doc.adminforge.de"
       },
       {
         "name": "CryptPad",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/cryptpad.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/cryptpad.png",
         "description": "Office suite for end-to-end encrypted collaboration.",
         "link": "https://cryptpad.adminforge.de"
       },
       {
         "name": "Calc",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/ethercalc.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/ethercalc.png",
         "description": "Collaborate on spreadsheets in real-time in the browser.",
         "link": "https://calc.adminforge.de"
       },
       {
         "name": "Pad",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/etherpad.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/etherpad.png",
         "description": "Collaborate on documents in real-time in the browser.",
         "link": "https://pad.adminforge.de"
       },
       {
         "name": "Project Board",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/wekan.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/wekan.png",
         "description": "Kanban-style project management.",
         "link": "https://kanban.adminforge.de"
       },
       {
         "name": "Trash Mail",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/07/trashmail.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/07/trashmail.png",
         "description": "Temporary email addresses for forum registrations, etc.",
         "link": "https://mailhole.de"
       },
       {
         "name": "Whiteboard",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/wbo.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/wbo.png",
         "description": "Collaborate on a whiteboard in real-time.",
         "link": "https://paint.adminforge.de"
       },
       {
         "name": "ToDo App",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/vikunja.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/vikunja.png",
         "description": "Organize all your tasks in lists.",
         "link": "https://tasks.adminforge.de"
       },
       {
         "name": "Diagrams",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/draw.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/draw.png",
         "description": "Whiteboarding and diagramming tool.",
         "link": "https://draw.adminforge.de"
       },
       {
         "name": "Git",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/gitea.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/gitea.png",
         "description": "A home for your code projects.",
         "link": "https://git.adminforge.de"
       },
       {
         "name": "IT Tools",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/08/it-tools.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/08/it-tools.png",
         "description": "Collection of practical online tools.",
         "link": "https://tools.adminforge.de/"
       },
       {
         "name": "Mini QR Code Generator",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/04/mini-qr.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/04/mini-qr.png",
         "description": "An app for creating beautiful QR codes and scanning various types.",
         "link": "https://qr.adminforge.de/"
       },
       {
         "name": "Documenso",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/04/documenso.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/04/documenso.png",
         "description": "DocuSign alternative. Have PDF documents signed.",
         "link": "https://sign.adminforge.de"
+      },
+      {
+        "name": "asciinema",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/07/asciinema-logo.png",
+        "description": "Record terminal sessions, stream them, and share them.",
+        "link": "https://asciinema.adminforge.de"
       }
     ]
   },
@@ -306,49 +312,49 @@
     "services": [
       {
         "name": "Secure Upload",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/lufi.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/lufi.png",
         "description": "Share files, text, images, and videos easily and encrypted.",
         "link": "https://upload.adminforge.de"
       },
       {
         "name": "NowTransfer Upload",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/psitransfer.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/psitransfer.png",
         "description": "Share files, text, images, and videos quickly and easily.",
         "link": "https://nowtransfer.de"
       },
       {
         "name": "Image Upload",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/lutim.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/lutim.png",
         "description": "Share images individually or in bulk securely over the internet.",
         "link": "https://img.adminforge.de"
       },
       {
         "name": "Airdrop",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/snapdrop.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/snapdrop.png",
         "description": "Exchange files in your local network completely via the browser.",
         "link": "https://dropfile.at"
       },
       {
         "name": "Firefox Send",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/send.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/send.png",
         "description": "Share files securely with end-to-end encryption.",
         "link": "https://send.adminforge.de"
       },
       {
         "name": "Magic Wormhole",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/magic-wormhole.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/magic-wormhole.png",
         "description": "Transfer items securely using a wormhole relay server between computers.",
         "link": "https://wormhole.adminforge.de"
       },
       {
         "name": "cURL File Upload",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/transfer.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/transfer.png",
         "description": "Simple file sharing via the command line.",
         "link": "https://transfer.adminforge.de"
       },
       {
         "name": "SkySend",
-        "icon": "https://adminforge.de/wp-content/uploads/2026/05/logo-skysend.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/05/logo-skysend.png",
         "description": "Share files, notes, and passwords end-to-end encrypted with others.",
         "link": "https://share.adminforge.de"
       }
@@ -359,31 +365,31 @@
     "services": [
       {
         "name": "Bitwarden Password Manager",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/bitwarden.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/bitwarden.png",
         "description": "Manage encrypted passwords on all your devices.",
         "link": "https://pwbox.de"
       },
       {
         "name": "Vaultwarden Password Manager",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/vaultwarden-1.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/vaultwarden-1.png",
         "description": "Enhanced encrypted password management with more features.",
         "link": "https://vault.pwbox.de"
       },
       {
         "name": "Password Exchange",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/password.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/password.png",
         "description": "Securely exchange passwords.",
         "link": "https://pw.adminforge.de"
       },
       {
         "name": "Hat.sh",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/hat.sh_.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/hat.sh_.png",
         "description": "Simple, fast, secure client-side file encryption.",
         "link": "https://hat.adminforge.de"
       },
       {
         "name": "Password Pusher",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/04/pwpush.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/04/pwpush.png",
         "description": "Push passwords, text, files, or URLs that expire and delete themselves.",
         "link": "https://pwpush.adminforge.de/"
       }
@@ -394,37 +400,37 @@
     "services": [
       {
         "name": "Translate",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/libretranslate-1.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/libretranslate-1.png",
         "description": "Translate text up to 10,000 characters long.",
         "link": "https://translate.adminforge.de"
       },
       {
         "name": "Google Translate",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/03/lingva.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/03/lingva.png",
         "description": "Alternative Google Translate frontend without tracking.",
         "link": "https://lingva.adminforge.de/"
       },
       {
         "name": "Multi Translate",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/07/mozhi.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/07/mozhi.png",
         "description": "Alternative Google/DeepL/DuckDuckGo frontend without tracking.",
         "link": "https://mozhi.adminforge.de/"
       },
       {
         "name": "Surveys",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/framadate.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/framadate.png",
         "description": "Create surveys or find a common date.",
         "link": "https://whatapoll.de"
       },
       {
         "name": "BookStack Wiki",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/02/bookstack.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/02/bookstack.png",
         "description": "Organize your information in books with pages.",
         "link": "https://bookstack.adminforge.de"
       },
       {
         "name": "Spell Check",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/03/LanguageTool_Logo.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/03/LanguageTool_Logo.png",
         "description": "LanguageTool is an AI-based grammar and spell checker.",
         "link": "https://adminforge.de/services/languagetool/"
       }
@@ -435,31 +441,31 @@
     "services": [
       {
         "name": "RSS Reader",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/freshrss.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/freshrss.png",
         "description": "Fresh-RSS is a wonderful web-based feed reader.",
         "link": "https://frss.adminforge.de"
       },
       {
         "name": "Bookmark Sync",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/xbrowsersync.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/xbrowsersync.png",
         "description": "Keep bookmarks encrypted and in sync across multiple devices.",
         "link": "https://sync.adminforge.de"
       },
       {
         "name": "Linkwarden Bookmark Manager",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/linkwarden.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/linkwarden.png",
         "description": "Bookmark manager for collecting and organizing web pages.",
         "link": "https://links.adminforge.de"
       },
       {
         "name": "Wallabag – Read them later",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/02/wallabag.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/02/wallabag.png",
         "description": "Save interesting articles and read them later.",
         "link": "https://bag.adminforge.de"
       },
       {
         "name": "linkding",
-        "icon": "https://adminforge.de/wp-content/uploads/2025/04/linkding.jpg",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2025/04/linkding.jpg",
         "description": "linkding is a bookmark manager with Firefox and Chrome extensions.",
         "link": "https://linkding.adminforge.de"
       }
@@ -470,13 +476,13 @@
     "services": [
       {
         "name": "Ntfy Push",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/ntfy.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/ntfy.png",
         "description": "UnifiedPush service, sends and receives in real-time.",
         "link": "https://ntfy.adminforge.de"
       },
       {
         "name": "Gotify Push",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/gotify.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/gotify.png",
         "description": "Service for sending and receiving notifications in real-time.",
         "link": "https://push.adminforge.de"
       }
@@ -487,13 +493,13 @@
     "services": [
       {
         "name": "RustDesk",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/rustdesk.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/rustdesk.png",
         "description": "Remote desktop software as a true alternative to TeamViewer.",
         "link": "https://deskforge.de"
       },
       {
         "name": "Remote Desktop",
-        "icon": "https://adminforge.de/wp-content/uploads/2024/01/remotely.png",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2024/01/remotely.png",
         "description": "Remote maintenance software for remote support.",
         "link": "https://remote.adminforge.de"
       }
