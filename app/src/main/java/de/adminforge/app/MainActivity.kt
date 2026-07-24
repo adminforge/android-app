@@ -34,6 +34,12 @@ class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener 
 
         prefs = getSharedPreferences("adminforge_prefs", Context.MODE_PRIVATE)
 
+        // One-time: clear the legacy filename-based icon cache so migrated icon URLs are re-fetched
+        if (!prefs.getBoolean("icon_cache_v2_cleared", false)) {
+            java.io.File(filesDir, "icons").deleteRecursively()
+            prefs.edit().putBoolean("icon_cache_v2_cleared", true).apply()
+        }
+
         // Initialize Background Notifications
         NotificationHelper.createNotificationChannel(this)
         if (prefs.getBoolean("notifications_enabled", false)) {
@@ -143,7 +149,11 @@ class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener 
                         
                         val cacheDir = java.io.File(filesDir, "icons")
                         if (!cacheDir.exists()) cacheDir.mkdirs()
-                        val fileName = service.iconUrl.substringAfterLast("/")
+                        // Cache key is derived from the full URL, so a changed icon path/host invalidates the old cache
+                        val ext = service.iconUrl.substringAfterLast('.', "png").take(4)
+                        val fileName = java.security.MessageDigest.getInstance("SHA-256")
+                            .digest(service.iconUrl.toByteArray())
+                            .joinToString("") { "%02x".format(it) } + "." + ext
                         val localFile = java.io.File(cacheDir, fileName)
 
                         thread {

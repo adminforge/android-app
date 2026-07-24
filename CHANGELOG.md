@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.3] - 2026-07-24
+### Fixed
+- Fix: Service icons now refresh after the backend.adminforge.de migration. The icon cache was keyed only by filename, so updated users kept seeing the old cached logos even though the URL changed. The cache is now keyed by the full icon URL and cleared once on update.
+
 ## [1.3.2] - 2026-07-21
 ### Added
 - Feature: Added asciinema service (record, stream & share terminal sessions) to Büro & Produktivität.
