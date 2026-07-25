@@ -1,6 +1,6 @@
 {
-  "versionCode": 376,
-  "versionName": "1.3.3",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.3/adminforge-v1.3.3.apk",
-  "notes": "v1.3.3 Release\n\n- Fixed: Service icons now refresh correctly after the backend.adminforge.de migration (icon cache is keyed by full URL and cleared once on update), so updated users see the current logos"
+  "versionCode": 377,
+  "versionName": "1.3.4",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.4/adminforge-v1.3.4.apk",
+  "notes": "v1.3.4 Release\n\n- Added: giebelWORKSPACE service (digital workplace: files, email, office, chat, video calls) added to Online Services"
 }

@@ -132,6 +132,12 @@
         "icon": "https://backend.adminforge.de/wp-content/uploads/2026/05/fittrackee.png",
         "description": "Outdoor-Tracks hochladen, Statistiken analysieren und Workouts gefiltert auf Karten anzeigen.",
         "link": "https://fit.adminforge.de"
+      },
+      {
+        "name": "giebelWORKSPACE",
+        "icon": "https://backend.adminforge.de/wp-content/uploads/2026/07/giebelworkspace-icon-192.png",
+        "description": "Dein voll verwalteter digitaler Arbeitsplatz: Dateien, E-Mail, Office, Chat und Videoanrufe.",
+        "link": "https://giebelworkspace.de/"
       }
     ]
   },
