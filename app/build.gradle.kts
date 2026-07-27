@@ -15,6 +15,20 @@ if (versionPropsFile.exists()) {
 val vCode = (versionProps["VERSION_CODE"] ?: "100").toString().toInt()
 val vName = (versionProps["VERSION_NAME"] ?: "1.0.0").toString()
 
+// Signing credentials live in local.properties, which is untracked.
+// Never hardcode keystore passwords in this file.
+val localPropsFile = rootProject.file("local.properties")
+val localProps = Properties()
+if (localPropsFile.exists()) {
+    localProps.load(FileInputStream(localPropsFile))
+}
+val releaseStoreFile = (localProps["RELEASE_STORE_FILE"] ?: "release-v2.jks").toString()
+val releaseStorePassword = localProps["RELEASE_STORE_PASSWORD"]?.toString()
+val releaseKeyAlias = (localProps["RELEASE_KEY_ALIAS"] ?: "adminforge").toString()
+val releaseKeyPassword = localProps["RELEASE_KEY_PASSWORD"]?.toString()
+val hasReleaseSigning = releaseStorePassword != null && releaseKeyPassword != null &&
+        rootProject.file(releaseStoreFile).exists()
+
 android {
     namespace = "de.adminforge.app"
     compileSdk = 36
@@ -32,20 +46,29 @@ android {
         includeInBundle = false
     }
 
+    // WARNING: the APK this produces is NOT ready to publish. It carries the current key only.
+    // A release must be re-signed with BOTH keys plus signing-lineage.bin, so that API 24-32
+    // still verifies against the previous key and API 33+ against the current one; otherwise
+    // devices on Android 7-12 cannot install the update. Use sign_release.sh, then confirm with
+    //   apksigner verify --print-certs adminforge-v<version>.apk
+    // which must list exactly two signers (minSdkVersion 24-32 and 33+).
     signingConfigs {
-        create("myconfig") {
-            storeFile = rootProject.file("release.jks")
-            storePassword = "adminforge"
-            keyAlias = "adminforge"
-            keyPassword = "adminforge"
-            enableV1Signing = true
-            enableV2Signing = true
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = rootProject.file(releaseStoreFile)
+                storePassword = releaseStorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+                enableV1Signing = true
+                enableV2Signing = true
+                enableV3Signing = true
+            }
         }
     }
 
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("myconfig")
+            signingConfig = if (hasReleaseSigning) signingConfigs.getByName("release") else null
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -93,15 +116,6 @@ dependencies {
     implementation("io.noties.markwon:core:4.6.2")
 }
 
-tasks.whenTaskAdded {
-    if (name == "assembleRelease") {
-        doLast {
-            copy {
-                from(layout.buildDirectory.dir("outputs/apk/release"))
-                into(project.rootDir)
-                include("app-release.apk")
-                rename { "adminforge-latest.apk" }
-            }
-        }
-    }
-}
+// The assembled APK is deliberately NOT copied to adminforge-latest.apk anymore: that artifact
+// still lacks the rotation lineage and would break updates on Android 7-12 if published.
+// sign_release.sh produces the publishable APK.

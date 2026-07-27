@@ -34,10 +34,11 @@ class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener 
 
         prefs = getSharedPreferences("adminforge_prefs", Context.MODE_PRIVATE)
 
-        // One-time: clear the legacy filename-based icon cache so migrated icon URLs are re-fetched
-        if (!prefs.getBoolean("icon_cache_v2_cleared", false)) {
+        // One-time: drop icon caches written under an older naming scheme, so migrated icon URLs
+        // are re-fetched instead of serving a stale logo.
+        if (!prefs.getBoolean("icon_cache_v3_cleared", false)) {
             java.io.File(filesDir, "icons").deleteRecursively()
-            prefs.edit().putBoolean("icon_cache_v2_cleared", true).apply()
+            prefs.edit().putBoolean("icon_cache_v3_cleared", true).apply()
         }
 
         // Initialize Background Notifications
@@ -149,24 +150,38 @@ class MainActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener 
                         
                         val cacheDir = java.io.File(filesDir, "icons")
                         if (!cacheDir.exists()) cacheDir.mkdirs()
-                        // Cache key is derived from the full URL, so a changed icon path/host invalidates the old cache
-                        val ext = service.iconUrl.substringAfterLast('.', "png").take(4)
-                        val fileName = java.security.MessageDigest.getInstance("SHA-256")
-                            .digest(service.iconUrl.toByteArray())
-                            .joinToString("") { "%02x".format(it) } + "." + ext
-                        val localFile = java.io.File(cacheDir, fileName)
 
                         thread {
                             try {
+                                // Cache key is the hash of the full URL, so a changed icon host or
+                                // path invalidates the old entry. Deliberately no file extension:
+                                // BitmapFactory detects the format from the content, while deriving
+                                // an extension from the URL breaks for extensionless icon links.
+                                val fileName = java.security.MessageDigest.getInstance("SHA-256")
+                                    .digest(service.iconUrl.toByteArray())
+                                    .joinToString("") { "%02x".format(it) }
+                                val localFile = java.io.File(cacheDir, fileName)
+
                                 if (localFile.exists()) {
                                     val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                                    runOnUiThread { iconView.setImageBitmap(bitmap) }
+                                    if (bitmap != null) {
+                                        runOnUiThread { iconView.setImageBitmap(bitmap) }
+                                    } else {
+                                        localFile.delete()
+                                    }
                                 } else {
-                                    val stream = URL(service.iconUrl).openStream()
-                                    val bytes = stream.readBytes()
-                                    localFile.writeBytes(bytes)
+                                    val conn = URL(service.iconUrl).openConnection()
+                                    conn.connectTimeout = 10000
+                                    conn.readTimeout = 10000
+                                    val bytes = conn.getInputStream().use { it.readBytes() }
                                     val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                                    runOnUiThread { iconView.setImageBitmap(bitmap) }
+                                    // Only cache decodable images. A 200 response carrying an HTML
+                                    // error page would otherwise be cached forever, leaving the
+                                    // icon permanently blank.
+                                    if (bitmap != null) {
+                                        localFile.writeBytes(bytes)
+                                        runOnUiThread { iconView.setImageBitmap(bitmap) }
+                                    }
                                 }
                             } catch (e: Exception) { e.printStackTrace() }
                         }

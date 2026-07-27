@@ -106,12 +106,14 @@ class WebActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
                 if (url.startsWith("http://") || url.startsWith("https://")) {
                     view.loadUrl(url)
                     updateBottomNavIcons(url)
-                } else {
+                } else if (EXTERNAL_SCHEMES.any { url.startsWith("$it:", ignoreCase = true) }) {
+                    // Only hand known schemes to other apps. Forwarding whatever a page asks for
+                    // lets a compromised service page fire arbitrary implicit intents.
                     try {
                         val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))
                         view.context.startActivity(intent)
                     } catch (e: android.content.ActivityNotFoundException) {
-                        // Log or handle missing app for intent
+                        // no app installed for this scheme
                     }
                 }
                 return true
@@ -285,5 +287,12 @@ class WebActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
             R.id.action_version -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        /** Schemes the embedded pages may hand off to other apps. */
+        private val EXTERNAL_SCHEMES = setOf(
+            "tel", "mailto", "sms", "smsto", "geo", "matrix", "xmpp", "magnet"
+        )
     }
 }

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.5] - 2026-07-27
+### Security
+- **Signing key updated.** Releases are now signed with the current key for Android 13+ and, via an APK Signature Scheme v3.1 lineage, with the previous key for Android 7-12, so existing installs keep updating. Signing credentials moved from the build script into `local.properties`.
+- **Updater stages the APK in internal storage.** On Android 7-9 any app holding a storage permission could overwrite the downloaded file between download and install.
+- **Reduced permissions.** Dropped SCHEDULE_EXACT_ALARM, USE_EXACT_ALARM and WRITE_EXTERNAL_STORAGE, none of which were used. The F-Droid build additionally drops REQUEST_INSTALL_PACKAGES and FOREGROUND_SERVICE_REMOTE_MESSAGING.
+- **Restricted link handling.** Pages in the in-app browser may now only hand a known set of URL schemes to other apps instead of any scheme they choose.
+
+### Fixed
+- Service icons are only cached once they decode as an image, so an HTML error page served with HTTP 200 no longer leaves an icon permanently blank.
+- Icon and update downloads now use connect/read timeouts instead of blocking indefinitely.
+- Icon cache keys no longer derive a file extension from the URL, which produced an invalid path for extensionless icon links.
+
 ## [1.3.4] - 2026-07-25
 ### Added
 - Feature: Added giebelWORKSPACE service (fully managed digital workplace: files, email, office, chat & video calls) to Online Services.

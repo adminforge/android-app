@@ -3,7 +3,7 @@
 Die offizielle Android-App für [adminForge](https://adminforge.de) – Deine Anlaufstelle für datenschutzfreundliche und werbefreie Open-Source-Dienste.
 
 <p align="center">
-  <img src="https://adminforge.de/wp-content/uploads/2024/09/adminforge-small-round-200x200-1.png" alt="adminForge Logo" />
+  <img src="screenshots/adminforge-logo.png" alt="adminForge Logo" />
 </p>
 
 
@@ -39,10 +39,13 @@ Lade die aktuellste Version direkt von unserem Git-Repository herunter:
 
 ## App Signature (Zertifikat)
 
-Alle offiziellen APK-Releases sind mit dem adminForge-Zertifikat signiert. Du kannst die Integrität der App mit folgendem SHA256-Fingerprint überprüfen:
+Alle offiziellen APK-Releases sind mit dem adminForge-Zertifikat signiert. Du kannst die Integrität der App mit folgenden SHA256-Fingerprints überprüfen:
 
-**SHA256 Fingerprint:**
-`D3:A9:7C:72:BB:24:F3:0B:34:68:74:99:0C:21:30:95:22:B5:58:62:8F:EB:14:B5:45:32:5D:FB:0F:0B:1D:F9`
+**SHA256 Fingerprints:**
+
+`0E:FF:39:C3:A1:D8:AB:AE:D7:CF:03:77:FE:8F:26:68:8F:27:93:2B:36:F5:9D:E1:26:74:69:B5:79:96:2B:10` (Android 13+)
+
+`D3:A9:7C:72:BB:24:F3:0B:34:68:74:99:0C:21:30:95:22:B5:58:62:8F:EB:14:B5:45:32:5D:FB:0F:0B:1D:F9` (Android 7–12)
 
 ## Lizenz
 

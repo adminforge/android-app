@@ -164,6 +164,8 @@ object UpdateChecker {
             try {
                 val url = URL(downloadUrl)
                 val connection = url.openConnection() as HttpURLConnection
+                connection.connectTimeout = 15000
+                connection.readTimeout = 30000
                 connection.connect()
 
                 if (connection.responseCode != HttpURLConnection.HTTP_OK) {
@@ -172,7 +174,10 @@ object UpdateChecker {
 
                 val fileLength = connection.contentLength
                 val input = connection.inputStream
-                val updateDir = File(context.getExternalFilesDir(null), "updates")
+                // Internal storage on purpose: on API 24-28 any app holding READ/WRITE_EXTERNAL_STORAGE
+                // can write into another app's getExternalFilesDir, which would let it swap this APK
+                // between download and install. FileProvider serves it via the files-path entry.
+                val updateDir = File(context.filesDir, "updates")
                 if (!updateDir.exists()) updateDir.mkdirs()
                 val apkFile = File(updateDir, "adminforge-update.apk")
                 val output = FileOutputStream(apkFile)

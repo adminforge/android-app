@@ -33,3 +33,6 @@ release.jks
 .agent/
 GEMINI.md
 
+
+# apksigner v4 signature sidecar
+*.idsig
