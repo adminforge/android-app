@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.6] - 2026-07-27
+### Added
+- **Favorites-only notifications.** New optional setting (off by default) to only get push notifications and see the status badge for outages of pinned favorite services, instead of every service on the status page.
+
 ## [1.3.5] - 2026-07-27
 ### Security
 - **Signing key updated.** Releases are now signed with the current key for Android 13+ and, via an APK Signature Scheme v3.1 lineage, with the previous key for Android 7-12, so existing installs keep updating. Signing credentials moved from the build script into `local.properties`.

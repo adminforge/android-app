@@ -283,8 +283,15 @@ class StatusActivity : BaseActivity(), StatusPoller.Listener {
             container.addView(tv)
         }
 
-        // Save offline count for the navigation badge (only count really offline services 0 and 2, ignored paused/unknown 3)
-        val offlineCount = monitorStatusMap.values.count { it == 0 || it == 2 }
+        // Save offline count for the navigation badge (only count really offline services 0 and 2, ignored paused/unknown 3).
+        // This list itself always shows every service; only the badge is scoped to favorites.
+        val favoritesOnly = prefs.getBoolean("notify_favorites_only", false)
+        val offlineCount = if (favoritesOnly) {
+            val favoriteIds = StatusPoller.getFavoriteMonitorIds(this)
+            monitorStatusMap.filterKeys { it.toIntOrNull() in favoriteIds }.values.count { it == 0 || it == 2 }
+        } else {
+            monitorStatusMap.values.count { it == 0 || it == 2 }
+        }
         prefs.edit().putInt("offline_status_count", offlineCount).apply()
         updateStatusBadge()
     }

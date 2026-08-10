@@ -1,6 +1,6 @@
 {
-  "versionCode": 378,
-  "versionName": "1.3.5",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.5/adminforge-v1.3.5.apk",
-  "notes": "v1.3.5 Release\n\n- Security: hardening in the update handling, the in-app browser and the app permissions\n- Security: the signing key was updated; existing installs keep updating normally\n- Fixed: service icons are no longer cached when the download is not an image\n- Fixed: icon and update downloads now time out instead of blocking indefinitely"
+  "versionCode": 379,
+  "versionName": "1.3.6",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.6/adminforge-v1.3.6.apk",
+  "notes": "v1.3.6 Release\n\n- New: Optional setting to only get notified (and see the status badge) for outages of your pinned favorite services"
 }

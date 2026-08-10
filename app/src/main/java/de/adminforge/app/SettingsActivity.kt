@@ -20,6 +20,7 @@ class SettingsActivity : BaseActivity(), SharedPreferences.OnSharedPreferenceCha
 
     private lateinit var prefs: SharedPreferences
     private lateinit var switchNotifications: SwitchCompat
+    private lateinit var switchFavoritesOnly: SwitchCompat
     private lateinit var textDistributor: TextView
     private lateinit var btnPickDistributor: Button
     private lateinit var btnTestNotification: Button
@@ -59,6 +60,7 @@ class SettingsActivity : BaseActivity(), SharedPreferences.OnSharedPreferenceCha
         toolbar.setNavigationOnClickListener { finish() }
 
         switchNotifications = findViewById(R.id.switch_notifications)
+        switchFavoritesOnly = findViewById(R.id.switch_favorites_only)
         textDistributor = findViewById(R.id.text_distributor)
         btnPickDistributor = findViewById(R.id.btn_pick_distributor)
         btnTestNotification = findViewById(R.id.btn_test_notification)
@@ -79,6 +81,11 @@ class SettingsActivity : BaseActivity(), SharedPreferences.OnSharedPreferenceCha
                 updateVisibility(false)
                 unregisterUnifiedPush()
             }
+        }
+
+        switchFavoritesOnly.isChecked = prefs.getBoolean("notify_favorites_only", false)
+        switchFavoritesOnly.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean("notify_favorites_only", isChecked).apply()
         }
 
         btnPickDistributor.setOnClickListener {
