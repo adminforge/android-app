@@ -20,6 +20,19 @@ import kotlin.concurrent.thread
 object UpdateChecker {
     private const val GITEA_RELEASES_API = "https://git.adminforge.de/api/v1/repos/adminforge/android-app/releases?limit=1"
     private const val RAW_FILE_BASE = "https://git.adminforge.de/adminforge/android-app/raw/tag"
+    private const val TRUSTED_DOWNLOAD_HOST = "git.adminforge.de"
+
+    /**
+     * version.json's downloadUrl is otherwise unvalidated app-controlled data (from a release
+     * asset on this Gitea instance); Android's own signature check is the real backstop against
+     * installing a malicious APK, but restricting the host closes off a redirect via a tampered
+     * or unreviewed version.json before we ever download anything.
+     */
+    private fun isTrustedDownloadUrl(downloadUrl: String): Boolean {
+        if (downloadUrl.isEmpty()) return false
+        val url = try { URL(downloadUrl) } catch (e: Exception) { return false }
+        return url.protocol == "https" && url.host == TRUSTED_DOWNLOAD_HOST
+    }
     
     // session flag to prevent redundant checks on every activity navigation
     private var hasCheckedThisSession = false
@@ -75,25 +88,35 @@ object UpdateChecker {
                 val json = fetchLatestVersionInfo()
                 
                 Handler(Looper.getMainLooper()).post {
-                    progressDialog.dismiss()
-                    if (json != null) {
-                        val latestCode = json.optInt("versionCode", 0)
-                        val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
-                        
-                        if (latestCode > currentCode) {
-                            showUpdateDialog(context, json)
+                    // The user can navigate away (e.g. press Back) during the up-to-5s network
+                    // round trip; dismiss()/AlertDialog.show() on a finished activity throws.
+                    try {
+                        progressDialog.dismiss()
+                        if (json != null) {
+                            val latestCode = json.optInt("versionCode", 0)
+                            val currentCode = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
+
+                            if (latestCode > currentCode) {
+                                showUpdateDialog(context, json)
+                            } else {
+                                Toast.makeText(context, context.getString(R.string.no_updates_found), Toast.LENGTH_SHORT).show()
+                            }
                         } else {
-                            Toast.makeText(context, context.getString(R.string.no_updates_found), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.getString(R.string.update_check_failed), Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        Toast.makeText(context, context.getString(R.string.update_check_failed), Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        Log.e("UpdateChecker", "Could not show update result", e)
                     }
                 }
             } catch (e: Exception) {
                 Log.e("UpdateChecker", "Interactive check failed", e)
                 Handler(Looper.getMainLooper()).post {
-                    progressDialog.dismiss()
-                    Toast.makeText(context, context.getString(R.string.update_check_failed), Toast.LENGTH_SHORT).show()
+                    try {
+                        progressDialog.dismiss()
+                        Toast.makeText(context, context.getString(R.string.update_check_failed), Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        Log.e("UpdateChecker", "Could not show update-check failure", e)
+                    }
                 }
             }
         }
@@ -139,7 +162,7 @@ object UpdateChecker {
             .setTitle(context.getString(R.string.new_update_available, versionName))
             .setMessage(context.getString(R.string.update_message))
             .setPositiveButton(context.getString(R.string.install)) { _, _ ->
-                if (downloadUrl.isNotEmpty()) {
+                if (isTrustedDownloadUrl(downloadUrl)) {
                     downloadAndInstall(context, downloadUrl)
                 } else {
                     val releaseUrl = "https://git.adminforge.de/adminforge/android-app/releases"
@@ -152,6 +175,11 @@ object UpdateChecker {
     }
 
     private fun downloadAndInstall(context: Context, downloadUrl: String) {
+        if (!isTrustedDownloadUrl(downloadUrl)) {
+            Log.e("UpdateChecker", "Refusing to download update from untrusted host: $downloadUrl")
+            return
+        }
+
         val progressDialog = ProgressDialog(context)
         progressDialog.setMessage(context.getString(R.string.downloading_update))
         progressDialog.setIndeterminate(false)

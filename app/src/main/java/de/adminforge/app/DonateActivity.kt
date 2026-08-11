@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
@@ -16,9 +15,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.text.HtmlCompat
-import org.jsoup.Jsoup
-import kotlin.concurrent.thread
 
 class DonateActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listener {
     private lateinit var prefs: SharedPreferences
@@ -34,61 +30,7 @@ class DonateActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listene
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         setupBottomNavigation()
-
-        val cachedHtml = prefs.getString("cached_donate_html", null)
-        if (cachedHtml != null) {
-            renderDonate(cachedHtml)
-        }
-
-        thread {
-            try {
-                val doc = try {
-                    Jsoup.connect("https://adminforge.de/unterstuetzen/").get()
-                } catch (e: Exception) {
-                    null
-                }
-
-                var finalHtml = ""
-                if (doc != null) {
-                    var startNode = doc.select("h1, h2, h3").find { it.text().contains("unterstützen", ignoreCase = true) }
-                    if (startNode == null) {
-                        startNode = doc.select("div.et_pb_module_inner").find { it.text().contains("PayPal", ignoreCase = true) }
-                    }
-
-                    if (startNode != null) {
-                        val builder = StringBuilder()
-                        var current: org.jsoup.nodes.Node? = startNode
-                        var capture = true
-                        while (current != null && capture) {
-                            if (current is org.jsoup.nodes.Element) {
-                                val text = current.text().lowercase()
-                                if (current.tagName().matches(Regex("h[1-6]")) && 
-                                    (text.contains("popular posts") || text.contains("presse") || text.contains("logos"))) {
-                                    capture = false
-                                    break
-                                }
-                                builder.append(current.outerHtml())
-                            } else if (current is org.jsoup.nodes.TextNode) {
-                                builder.append(current.outerHtml())
-                            }
-                            current = current.nextSibling()
-                        }
-                        finalHtml = builder.toString()
-                    }
-                }
-
-                if (finalHtml.length < 100) {
-                    finalHtml = "FORCE_FALLBACK"
-                }
-
-                prefs.edit().putString("cached_donate_html", finalHtml).apply()
-                // Goal fetching removed as requested, but keeping cache logic for content if needed later
-                runOnUiThread { renderDonate(finalHtml) }
-            } catch (e: Exception) {
-                Log.e("DonateActivity", "Error in fetch thread", e)
-            }
-        }
-        
+        renderDonate()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -141,7 +83,7 @@ class DonateActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listene
         }
     }
 
-    private fun renderDonate(html: String) {
+    private fun renderDonate() {
         findViewById<ProgressBar>(R.id.progress_bar).visibility = View.GONE
         
         // Setup click listeners for redesign links
@@ -166,8 +108,12 @@ class DonateActivity : BaseActivity(), StatusPoller.Listener, NewsPoller.Listene
     }
 
     private fun openUrlExternal(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))
-        startActivity(intent)
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)))
+        } catch (e: android.content.ActivityNotFoundException) {
+            // e.g. tapping the Bitcoin card with no wallet app installed
+            Toast.makeText(this, getString(R.string.no_app_found), Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onResume() {

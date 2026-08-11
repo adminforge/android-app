@@ -26,9 +26,13 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Coroutine
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 1, TimeUnit.MINUTES)
                 .build()
 
+            // KEEP, not REPLACE: this runs on every app cold start while notifications are
+            // enabled. Resetting an already-scheduled/running chain here means a user who
+            // reopens the app more often than the poll interval would never let a background
+            // poll actually fire.
             WorkManager.getInstance(context).enqueueUniqueWork(
                 WORK_NAME,
-                ExistingWorkPolicy.REPLACE,
+                ExistingWorkPolicy.KEEP,
                 request
             )
         }
@@ -65,18 +69,18 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Coroutine
 
             if (newsOk) checkNews(prefs)
             if (statusOk) checkStatus(prefs)
-
-            if (!newsOk || !statusOk) {
-                return Result.retry()
-            }
         } catch (e: Exception) {
-            return Result.retry()
+            // Fall through and reschedule the next cycle below at the normal cadence, rather
+            // than returning Result.retry(): that used to skip the reschedule entirely and
+            // hand cadence control to WorkManager's own exponential backoff for this request,
+            // which can grow the interval to hours - degrading status notifications too, even
+            // if only the unrelated news feed was failing.
         }
 
         // Schedule next execution if not triggered by push and notifications are still enabled
         if (!hasPush && prefs.getBoolean("notifications_enabled", false)) {
             val nextDelay = if (runAttemptCount > 0) 10L else 5L // Jitter or adjust based on success
-            
+
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build()
@@ -87,9 +91,13 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Coroutine
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 1, TimeUnit.MINUTES)
                 .build()
 
+            // APPEND_OR_REPLACE, not REPLACE: this call runs from inside the very work item
+            // it's about to supersede. REPLACE cancels the "existing" work under this name -
+            // which is this currently-running invocation - racing its own Result.success()
+            // returned just below.
             WorkManager.getInstance(applicationContext).enqueueUniqueWork(
                 WORK_NAME,
-                ExistingWorkPolicy.REPLACE,
+                ExistingWorkPolicy.APPEND_OR_REPLACE,
                 nextRequest
             )
         }

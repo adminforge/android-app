@@ -29,6 +29,7 @@ class StatusActivity : BaseActivity(), StatusPoller.Listener {
     private var allIncidents: List<Map<String, Any>> = emptyList()
 
     private var monitorStatusMap: Map<String, Int> = emptyMap()
+    private var favoriteMonitorIdsByLink: Map<String, Set<Int>> = emptyMap()
     private var filterOfflineOnly = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,7 +134,12 @@ class StatusActivity : BaseActivity(), StatusPoller.Listener {
                 }
                 monitorStatusMap = statusMap
             }
-            
+
+            // Resolved once per data refresh (inside this try/catch) rather than on every
+            // keystroke in renderStatus(), which used to call this unguarded from the search
+            // box's TextWatcher.
+            favoriteMonitorIdsByLink = StatusPoller.getFavoriteMonitorIdsByLink(this, schemaJson)
+
             renderStatus("")
         } catch (e: Exception) { Log.e("StatusActivity", "Failed to parse JSON", e) }
     }
@@ -286,9 +292,14 @@ class StatusActivity : BaseActivity(), StatusPoller.Listener {
         // Save offline count for the navigation badge (only count really offline services 0 and 2, ignored paused/unknown 3).
         // This list itself always shows every service; only the badge is scoped to favorites.
         val favoritesOnly = prefs.getBoolean("notify_favorites_only", false)
-        val offlineCount = if (favoritesOnly) {
-            val favoriteIds = StatusPoller.getFavoriteMonitorIds(this)
-            monitorStatusMap.filterKeys { it.toIntOrNull() in favoriteIds }.values.count { it == 0 || it == 2 }
+        // Same fallback as StatusPoller.countOffline: an empty resolved map (nothing pinned, or
+        // nothing pinned resolves to a monitor) shows the unrestricted count instead of a badge
+        // stuck at 0, which would misleadingly look like "no favorites are down". Counted per
+        // pinned service, not per monitor, so e.g. simultaneous IMAP+SMTP outages of the same
+        // mail service count once.
+        val restrictByLink = favoriteMonitorIdsByLink.takeIf { favoritesOnly }?.takeIf { it.isNotEmpty() }
+        val offlineCount = if (restrictByLink != null) {
+            restrictByLink.values.count { ids -> ids.any { id -> monitorStatusMap[id.toString()].let { it == 0 || it == 2 } } }
         } else {
             monitorStatusMap.values.count { it == 0 || it == 2 }
         }

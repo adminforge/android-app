@@ -11,6 +11,7 @@ import org.xmlpull.v1.XmlPullParserFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream
+import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
 
@@ -78,14 +79,46 @@ object NewsPoller {
 
     private var appContext: Context? = null
 
+    /**
+     * Bumps the unread badge by counting items newer than the last-seen link, instead of by
+     * feed length: adminforge.de/feed serves a fixed-size window (WordPress default), so once
+     * the feed has more items than that window, its length never grows and the old count-based
+     * comparison stopped detecting new articles at all.
+     */
+    private fun updateUnreadCount(prefs: android.content.SharedPreferences, items: List<NewsItem>) {
+        val newestLink = items.first().link
+        val lastSeenLink = prefs.getString("last_seen_news_link", null)
+        if (lastSeenLink == null) {
+            // First fetch ever (or after this migration): establish the baseline without
+            // retroactively counting the whole feed as unread.
+            prefs.edit().putString("last_seen_news_link", newestLink).apply()
+            return
+        }
+        if (newestLink == lastSeenLink) return
+
+        // Count items ahead of the last-seen one. If it has scrolled out of the fetched window
+        // entirely (more articles published than the window holds since the last check), this
+        // naturally falls back to the full window size as a safe lower bound.
+        val newCount = items.takeWhile { it.link != lastSeenLink }.size
+        if (newCount > 0) {
+            val currentUnread = prefs.getInt("unread_news_count", 0)
+            prefs.edit()
+                .putInt("unread_news_count", currentUnread + newCount)
+                .putString("last_seen_news_link", newestLink)
+                .apply()
+        }
+    }
+
     suspend fun performFetchSuspend(context: Context? = appContext): Boolean = withContext(Dispatchers.IO) {
         val ctx = context?.applicationContext ?: return@withContext false
         appContext = ctx
         
         var inputStream: InputStream? = null
         try {
-            val url = URL("https://adminforge.de/feed")
-            inputStream = url.openStream()
+            val connection = URL("https://adminforge.de/feed").openConnection() as HttpURLConnection
+            connection.connectTimeout = 10000
+            connection.readTimeout = 10000
+            inputStream = connection.inputStream
             val parser = XmlPullParserFactory.newInstance().newPullParser()
             parser.setInput(inputStream, null)
             var eventType = parser.eventType
@@ -125,20 +158,7 @@ object NewsPoller {
 
             if (items.isNotEmpty()) {
                 val prefs = ctx.getSharedPreferences("adminforge_prefs", Context.MODE_PRIVATE)
-                val totalProcessed = prefs.getInt("total_news_items", 0)
-                val currentUnread = prefs.getInt("unread_news_count", 0)
-                val fetchedCount = items.size
-
-                if (totalProcessed == 0 && fetchedCount > 0) {
-                    prefs.edit().putInt("total_news_items", fetchedCount).apply()
-                } else if (fetchedCount > totalProcessed) {
-                    val newUnread = fetchedCount - totalProcessed
-                    prefs.edit()
-                        .putInt("unread_news_count", currentUnread + newUnread)
-                        .putInt("total_news_items", fetchedCount)
-                        .apply()
-                }
-
+                updateUnreadCount(prefs, items)
                 prefs.edit().putString("cached_news", gson.toJson(items)).apply()
                 withContext(Dispatchers.Main) {
                     listeners.forEach { it.onNewsUpdated() }
@@ -164,8 +184,10 @@ object NewsPoller {
         thread {
             var inputStream: InputStream? = null
             try {
-                val url = URL("https://adminforge.de/feed")
-                inputStream = url.openStream()
+                val connection = URL("https://adminforge.de/feed").openConnection() as HttpURLConnection
+                connection.connectTimeout = 10000
+                connection.readTimeout = 10000
+                inputStream = connection.inputStream
                 val parser = XmlPullParserFactory.newInstance().newPullParser()
                 parser.setInput(inputStream, null)
                 var eventType = parser.eventType
@@ -205,20 +227,7 @@ object NewsPoller {
 
                 if (items.isNotEmpty()) {
                     val prefs = ctx.getSharedPreferences("adminforge_prefs", Context.MODE_PRIVATE)
-                    val totalProcessed = prefs.getInt("total_news_items", 0)
-                    val currentUnread = prefs.getInt("unread_news_count", 0)
-                    val fetchedCount = items.size
-
-                    if (totalProcessed == 0 && fetchedCount > 0) {
-                        prefs.edit().putInt("total_news_items", fetchedCount).apply()
-                    } else if (fetchedCount > totalProcessed) {
-                        val newUnread = fetchedCount - totalProcessed
-                        prefs.edit()
-                            .putInt("unread_news_count", currentUnread + newUnread)
-                            .putInt("total_news_items", fetchedCount)
-                            .apply()
-                    }
-
+                    updateUnreadCount(prefs, items)
                     prefs.edit().putString("cached_news", gson.toJson(items)).apply()
                     handler.post {
                         listeners.forEach { it.onNewsUpdated() }

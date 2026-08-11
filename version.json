@@ -1,6 +1,6 @@
 {
-  "versionCode": 379,
-  "versionName": "1.3.6",
-  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.6/adminforge-v1.3.6.apk",
-  "notes": "v1.3.6 Release\n\n- New: Optional setting to only get notified (and see the status badge) for outages of your pinned favorite services"
+  "versionCode": 382,
+  "versionName": "1.3.9",
+  "downloadUrl": "https://git.adminforge.de/adminforge/android-app/releases/download/v1.3.9/adminforge-v1.3.9.apk",
+  "notes": "v1.3.9 Release\n\n- Fixed: background status/news polling could silently slow down to once every few hours after a single failed check, instead of the intended 5-10 minutes\n- Fixed: reopening the app could reset the background poll timer before it ever fired\n- Fixed: favorites-only status could overcount an outage affecting several checks of the same pinned service (e.g. mail) as multiple outages instead of one"
 }

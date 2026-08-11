@@ -29,6 +29,9 @@ release.jks
 *.jks
 *.keystore
 
+# Local working snapshots - never publish, may contain the pre-rotation keystore/password
+.backup/
+
 # AI Agents
 .agent/
 GEMINI.md

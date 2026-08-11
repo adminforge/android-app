@@ -103,10 +103,7 @@ dependencies {
     
     // UnifiedPush
     implementation("org.unifiedpush.android:connector:3.1.2")
-    
-    // For HTML parsing
-    implementation("org.jsoup:jsoup:1.17.2")
-    
+
     // For Json Parsing
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")

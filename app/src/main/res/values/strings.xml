@@ -59,6 +59,7 @@
     <string name="bank_bic">BIC</string>
     <string name="bank_name">Bank</string>
     <string name="copy_toast">Copied to clipboard</string>
+    <string name="no_app_found">No app found to handle this link</string>
     <string name="unread_format">%d unread articles</string>
     <string name="status_offline_filter">Only offline services</string>
     <string name="error_loading">Error loading</string>

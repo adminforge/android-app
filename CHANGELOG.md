@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.3.9] - 2026-07-27
+### Fixed
+- **Background polling could silently slow to a crawl.** A single failed news or status fetch used to skip rescheduling the next poll entirely and hand control to WorkManager's own exponential backoff, which can grow the interval to hours. A failed cycle now still reschedules the next attempt at the normal 5-10 minute cadence.
+- **Reopening the app could reset the poll timer.** The background chain was rebuilt from scratch (with a fresh 5-minute delay) every time the app cold-started while notifications were enabled, so a user who reopened the app more often than that would never actually let a background poll fire. It now only starts the chain if one isn't already scheduled.
+- **Worker self-rescheduling used the wrong WorkManager policy**, cancelling its own currently-running invocation as a side effect (usually harmless, but undefined and made the retry/backoff bookkeeping unreliable).
+- **Favorites-only status could overcount.** An outage affecting several checks of the same pinned service (e.g. a mail service's IMAP and SMTP both going down together) was counted as multiple outages instead of one, inflating the badge and notification count beyond what the user actually pinned.
+
+## [1.3.8] - 2026-07-27
+### Fixed
+- **Unread-news badge stopped updating.** adminforge.de/feed serves a fixed-size window, so once the site had more articles than that window, the feed's length never grew and the old count-based comparison stopped detecting new articles entirely (push notifications were unaffected, they compare differently). It now tracks the newest article's link instead.
+- **Bitcoin donate card could crash the app** on a device with no Bitcoin wallet installed; now shows a toast instead, matching the in-app browser's existing handling of unhandled link schemes.
+- **Interactive update check could crash** if the screen was closed while the check was still running.
+- Removed a donate-page network fetch that ran on every visit but never affected what was displayed (the cards have been static for a while); also drops the now-unused Jsoup dependency.
+
+### Security
+- The in-app updater now only downloads from git.adminforge.de, regardless of what a `version.json` might specify - defense in depth alongside the existing signature check.
+
+### Changed
+- News and status network requests now time out instead of blocking indefinitely.
+
+## [1.3.7] - 2026-07-27
+### Fixed
+- **Favorites-only status ordering bug.** Right after enabling the setting (or on a fresh install), the offline count could briefly use the previous poll's data instead of the one just fetched, so a real outage wasn't reflected until the next cycle.
+- **False all-clear notification.** Enabling favorites-only with no pinned service (or none that resolve to a monitor) made the offline count permanently read 0, which could fire an "all clear" notification while an outage was still ongoing. It now falls back to the unrestricted count in that case.
+- **Status screen crash risk.** An unexpected shape in the status-page response could crash the screen while typing in its search box; the favorites lookup that could throw is now guarded and computed once per refresh instead of on every keystroke.
+
 ## [1.3.6] - 2026-07-27
 ### Added
 - **Favorites-only notifications.** New optional setting (off by default) to only get push notifications and see the status badge for outages of pinned favorite services, instead of every service on the status page.
